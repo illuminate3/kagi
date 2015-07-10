@@ -76,3 +76,9 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 // --------------------------------------------------------------------------
+
+Route::group(['prefix' => 'kagi'], function() {
+	Route::get('/', function() {
+		dd('This is the Kagi module index page.');
+	});
+});

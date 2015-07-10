@@ -1,23 +1,25 @@
 <?php
-namespace App\Modules\Kagi\Http\Controllers;
+
+namespace App\Modules\Core\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Bus\DispatchesCommands;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 
 use Theme;
 
-//abstract class KagiController extends BaseController {
+
 class KagiController extends Controller
 {
 
-	use DispatchesCommands, ValidatesRequests;
+
+	use DispatchesJobs, ValidatesRequests;
 
 	/**
 	 * Initializer.
 	 *
-	 * @return \KagiController
+	 * @return \CoreController
 	 */
 	public function __construct()
 	{
@@ -39,8 +41,18 @@ class KagiController extends Controller
 	 */
 	public function welcome()
 	{
-		return Theme::View('modules.kagi.kagi');
-//		return View('kagi::kagi');
+		return Theme::View('modules.core.general');
+	}
+
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		return Theme::View('modules.core.landing');
 	}
 
 
