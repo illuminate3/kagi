@@ -8,9 +8,10 @@
 		"caffeinated/flash": "~2.0",
 		"caffeinated/modules": "~2.0",
 		"caffeinated/plugins": "~2.0",
+		"caffeinated/shinobi": "~2.0",
 		"caffeinated/themes": "~2.0",
+		"graham-campbell/throttle": "~4.1",
 		"laracasts/presenter": "dev-master",
-		"vespakoen/menu": "3.*",
 		"vinkla/translator": "^2.2"
 	},
 	"config": {
