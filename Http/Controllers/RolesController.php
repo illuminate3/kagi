@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Modules\Kagi\Http\Domain\Models\Role;
@@ -12,7 +13,9 @@ use App\Modules\Kagi\Http\Requests\DeleteRequest;
 use Datatables;
 use Flash;
 
+
 class RolesController extends KagiController {
+
 
 	/**
 	 * The UserRepository instance.

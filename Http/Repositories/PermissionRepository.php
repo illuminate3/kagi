@@ -1,12 +1,13 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Repositories;
 
 use App\Modules\Kagi\Http\Domain\Models\Permission;
 use Illuminate\Http\Request;
 
-//use File, Auth;
 
 class PermissionRepository extends BaseRepository {
+
 
 	/**
 	 * The Role instance.
@@ -79,5 +80,6 @@ class PermissionRepository extends BaseRepository {
 		$permission = $this->getById($id);
 		$permission->update($input);
 	}
+
 
 }

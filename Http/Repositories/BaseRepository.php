@@ -1,7 +1,9 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Repositories;
 
 abstract class BaseRepository {
+
 
 	/**
 	 * The Model instance.

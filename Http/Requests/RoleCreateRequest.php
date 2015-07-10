@@ -1,9 +1,12 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class RoleCreateRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -28,5 +31,6 @@ class RoleCreateRequest extends FormRequest {
 			'description'		=> 'required',
 		];
 	}
+
 
 }

@@ -1,10 +1,13 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Auth;
 
+
 class DeleteRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -29,5 +32,6 @@ class DeleteRequest extends FormRequest {
 //			'id' => 'required|integer',
 		];
 	}
+
 
 }

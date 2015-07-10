@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Middleware;
 
 use Auth;
@@ -7,8 +8,11 @@ use Flash;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Routing\Middleware;
 
+
 class AuthenticateAdmin implements Middleware
 {
+
+
 	/**
 	 * Handle an incoming request.
 	 *
@@ -28,4 +32,6 @@ class AuthenticateAdmin implements Middleware
 
 		return $next($request);
 	}
+
+
 }

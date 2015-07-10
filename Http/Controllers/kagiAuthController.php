@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -7,7 +8,9 @@ use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+
 class KagiAuthController extends Controller {
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -36,5 +39,6 @@ class KagiAuthController extends Controller {
 
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
+
 
 }

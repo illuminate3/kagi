@@ -1,7 +1,7 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
-//use Illuminate\Http\Request;
 use Illuminate\Contracts\Auth\Guard;
 use App\Modules\Kagi\Http\Domain\Services\Registrar;
 use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
@@ -14,7 +14,9 @@ use Config;
 use Flash;
 use Theme;
 
+
 trait KagiAuthandRegister {
+
 
 	/**
 	 * The Guard implementation.

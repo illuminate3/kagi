@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Modules\Kagi\Http\Domain\Models\Permission;
@@ -14,7 +15,9 @@ use DB;
 use Flash;
 use Form;
 
+
 class PermissionsController extends KagiController {
+
 
 	/**
 	 * The UserRepository instance.

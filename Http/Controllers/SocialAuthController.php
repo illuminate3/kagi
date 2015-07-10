@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -8,6 +9,7 @@ use App\Modules\Kagi\Http\Listeners\AuthenticateUserListener;
 
 //use App\Modules\Kagi\Http\Domain\Services\Registrar;
 //use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
+
 
 class SocialAuthController extends Controller implements AuthenticateUserListener {
 
@@ -42,5 +44,6 @@ class SocialAuthController extends Controller implements AuthenticateUserListene
 
 		return redirect('/');
 	}
+
 
 }

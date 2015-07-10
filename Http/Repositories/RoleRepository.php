@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Repositories;
 
 use App\Modules\Kagi\Http\Domain\Models\Role;
 use App\Modules\Kagi\Http\Domain\Models\Permission;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
-//use File, Auth;
 use DB;
 
+
 class RoleRepository extends BaseRepository {
+
 
 	/**
 	 * The Role instance.
@@ -94,5 +96,6 @@ class RoleRepository extends BaseRepository {
 
 		$role->syncPermissions($input['my-select']);
 	}
+
 
 }

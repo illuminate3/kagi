@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -6,7 +7,9 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+
 trait KagiResetPassword {
+
 
 	/**
 	 * The Guard implementation.
@@ -131,5 +134,6 @@ trait KagiResetPassword {
 	{
 		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
 	}
+
 
 }

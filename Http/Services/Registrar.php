@@ -1,15 +1,15 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Services;
 
-//use App\User;
 use App\Modules\Kagi\Http\Domain\Models\User as User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
-//use Illuminate\Mail\Mailer as Mail;
 
-use Mail;
 use Config;
 use DB;
+use Mail;
+
 
 class Registrar implements RegistrarContract {
 
@@ -209,5 +209,6 @@ class Registrar implements RegistrarContract {
 
 		return $jinji;
 	}
+
 
 }

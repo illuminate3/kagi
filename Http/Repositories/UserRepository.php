@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Repositories;
 
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
@@ -13,7 +14,9 @@ use DB;
 use Eloquent;
 use Hash;
 
+
 class UserRepository extends BaseRepository {
+
 
 	/**
 	 * The User instance.

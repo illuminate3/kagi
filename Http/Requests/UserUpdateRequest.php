@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Config;
+
 
 class UserUpdateRequest extends FormRequest {
+
 
 	/**
 	* Determine if the user is authorized to make this request.
@@ -32,5 +34,6 @@ class UserUpdateRequest extends FormRequest {
 			'roles'						=> 'required',
 		];
 	}
+
 
 }

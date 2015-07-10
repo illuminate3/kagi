@@ -1,14 +1,20 @@
 <?php
+
 namespace App\Modules\Kagi\Providers;
+
+//use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider;
 
 use App;
 use Config;
 use Lang;
 use View;
-use Illuminate\Support\ServiceProvider;
+
 
 class KagiServiceProvider extends ServiceProvider
 {
+
+
 	/**
 	 * Register the Kagi module service provider.
 	 *
@@ -19,20 +25,71 @@ class KagiServiceProvider extends ServiceProvider
 		// This service provider is a convenient place to register your modules
 		// services in the IoC container. If you wish, you may make additional
 		// methods or service providers to keep the code more focused and granular.
-		App::register('App\Modules\Kagi\Providers\RouteServiceProvider');
 
 		$this->registerNamespaces();
+		$this->registerProviders();
 	}
 
 	/**
-	 * Register the Kagi module resource namespaces.
+	 * Register the Menus module resource namespaces.
 	 *
 	 * @return void
 	 */
 	protected function registerNamespaces()
 	{
-		Lang::addNamespace('kagi', realpath(__DIR__.'/../Resources/Lang'));
-
+//		Lang::addNamespace('menus', realpath(__DIR__.'/../Resources/Lang'));
 		View::addNamespace('kagi', realpath(__DIR__.'/../Resources/Views'));
 	}
+
+
+	/**
+	 * Boot the service provider.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->publishes([
+			__DIR__ . '/../Config/kagi_services.php' => config_path('kagi_services.php'),
+			__DIR__ . '/../Config/kagi.php' => config_path('kagi.php'),
+// 			__DIR__ . '/../Publish/assets/vendors' => base_path('public/assets/vendors/'),
+// 			__DIR__ . '/../Publish/Plugins' => base_path('app/Plugins/'),
+// 			__DIR__ . '/../Publish/views/plugins/' => base_path('resources/views/plugins/'),
+		]);
+/*
+		$this->publishes([
+			__DIR__ . '/../Publish/assets/vendors' => base_path('public/assets/vendors/'),
+		], 'js');
+
+		$this->publishes([
+			__DIR__ . '/../Publish/Plugins' => base_path('app/Plugins/'),
+		], 'plugins');
+
+		$this->publishes([
+			__DIR__ . '/../Publish/views/plugins/' => base_path('resources/views/plugins/'),
+		], 'views');
+*/
+
+		AliasLoader::getInstance()->alias(
+			'Menu',
+			'Menu\Menu'
+		);
+
+
+	}
+
+
+	/**
+	* add Prvoiders
+	*
+	* @return void
+	*/
+	private function registerProviders()
+	{
+		$app = $this->app;
+
+		$app->register('App\Modules\Kagi\Providers\RouteServiceProvider');
+	}
+
+
 }

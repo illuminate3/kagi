@@ -1,15 +1,20 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Domain\Services;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Modules\Kagi\Http\Domain\Models\User;
 use App\Modules\Kagi\Http\Domain\Models\Role;
 
-use Hash, Input, DB, Eloquent;
 use DateTime;
-//use File, Auth;
+use DB;
+use Eloquent;
+use Hash;
+use Input;
+
 
 class LoginRegistrar extends Model {
+
 
 	/**
 	 * The database table used by the model.
@@ -112,5 +117,6 @@ class LoginRegistrar extends Model {
 		]);
 	}
 */
+
 
 }

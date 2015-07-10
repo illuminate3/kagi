@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
@@ -6,7 +7,9 @@ use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
+
 class KagiPasswordController extends Controller {
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -38,5 +41,6 @@ class KagiPasswordController extends Controller {
 
 		$this->middleware('guest');
 	}
+
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Middleware;
 
 use Closure;
@@ -6,8 +7,10 @@ use GrahamCampbell\Throttle\Facades\Throttle;
 use Illuminate\Contracts\Routing\Middleware;
 use Symfony\Component\HttpKernel\Exception\TooManyRequestsHttpException;
 
+
 class Throttle implements Middleware
 {
+
 
 	/**
 	 * Handle an incoming request.
@@ -31,5 +34,6 @@ class Throttle implements Middleware
 
 		return $next($request);
 	}
+
 
 }

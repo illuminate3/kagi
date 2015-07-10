@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Controllers;
 
 //use Illuminate\Contracts\Auth\Authenticator;
@@ -14,7 +15,9 @@ use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
 
 use Config;
 
+
 class SocialAuthenticateUser {
+
 
 	/**
 	 * @var UserRepository
@@ -94,5 +97,6 @@ class SocialAuthenticateUser {
 	{
 		return $this->socialite->driver('google')->user();
 	}
+
 
 }
