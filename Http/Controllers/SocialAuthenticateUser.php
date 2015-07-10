@@ -7,11 +7,11 @@ use Illuminate\Contracts\Auth\Guard;
 
 use Laravel\Socialite\Contracts\Factory as Socialite;
 
-use App\Modules\Kagi\Http\Domain\Repositories\UserRepository;
+use App\Modules\Kagi\HttpRepositories\UserRepository;
 use App\Modules\Kagi\Http\Listeners\AuthenticateUserListener;
 
-use App\Modules\Kagi\Http\Domain\Services\Registrar;
-use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
+use App\Modules\Kagi\HttpServices\Registrar;
+use App\Modules\Kagi\HttpServices\LoginRegistrar;
 
 use Config;
 

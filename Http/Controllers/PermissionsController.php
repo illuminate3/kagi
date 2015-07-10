@@ -2,8 +2,8 @@
 
 namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\Http\Domain\Models\Permission;
-use App\Modules\Kagi\Http\Domain\Repositories\PermissionRepository;
+use App\Modules\Kagi\HttpModels\Permission;
+use App\Modules\Kagi\HttpRepositories\PermissionRepository;
 
 //use Illuminate\Http\Request;
 use App\Modules\Kagi\Http\Requests\PermissionCreateRequest;
@@ -22,14 +22,14 @@ class PermissionsController extends KagiController {
 	/**
 	 * The UserRepository instance.
 	 *
-	 * @var App\Modules\Kagi\Http\Domain\Repositories\PermissionRepository
+	 * @var App\Modules\Kagi\HttpRepositories\PermissionRepository
 	 */
 	protected $permissions;
 
 	/**
 	 * Create a new PermissionsController instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Repositories\PermissionRepository $permission
+	 * @param  App\Modules\Kagi\HttpRepositories\PermissionRepository $permission
 	 * @return void
 	 */
 	public function __construct(

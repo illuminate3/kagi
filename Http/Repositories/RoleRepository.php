@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Modules\Kagi\Http\Domain\Repositories;
+namespace App\Modules\Kagi\HttpRepositories;
 
-use App\Modules\Kagi\Http\Domain\Models\Role;
-use App\Modules\Kagi\Http\Domain\Models\Permission;
+use App\Modules\Kagi\HttpModels\Role;
+use App\Modules\Kagi\HttpModels\Permission;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 
 use DB;
@@ -22,7 +22,7 @@ class RoleRepository extends BaseRepository {
 	/**
 	 * Create a new RoleRepository instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Models\Role $role
+	 * @param  App\Modules\Kagi\HttpModels\Role $role
 	 * @return void
 	 */
 	public function __construct(

@@ -3,8 +3,8 @@
 namespace App\Modules\Kagi\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
-use App\Modules\Kagi\Http\Domain\Services\Registrar;
-use App\Modules\Kagi\Http\Domain\Services\LoginRegistrar;
+use App\Modules\Kagi\HttpServices\Registrar;
+use App\Modules\Kagi\HttpServices\LoginRegistrar;
 use App\Modules\Kagi\Http\Requests\Auth\LoginRequest;
 use GrahamCampbell\Throttle\Facades\Throttle;
 use Illuminate\Support\Facades\Request as Request;
@@ -42,7 +42,7 @@ trait KagiAuthandRegister {
 		$check = $this->registrar->checkSankaStatus();
 //dd($check);
 		if ( $check != null ) {
-			$payment_settings = \App\Modules\Sanka\Http\Domain\Models\PaymentSetting::first();
+			$payment_settings = \App\Modules\Sanka\HttpModels\PaymentSetting::first();
 //dd($payment_settings);
 			return View('sanka::subscription.signup', compact('payment_settings'));
 		}

@@ -5,7 +5,7 @@ namespace App\Modules\Kagi\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 //use Illuminate\Contracts\Auth\Registrar;
-use App\Modules\Kagi\Http\Domain\Services\Registrar;
+use App\Modules\Kagi\HttpServices\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Kagi\Http\Domain\Repositories;
+namespace App\Modules\Kagi\HttpRepositories;
 
-use App\Modules\Kagi\Http\Domain\Models\Permission;
+use App\Modules\Kagi\HttpModels\Permission;
 use Illuminate\Http\Request;
 
 
@@ -12,14 +12,14 @@ class PermissionRepository extends BaseRepository {
 	/**
 	 * The Role instance.
 	 *
-	 * @var App\Modules\Kagi\Http\Domain\Models\Permission
+	 * @var App\Modules\Kagi\HttpModels\Permission
 	 */
 	protected $permission;
 
 	/**
 	 * Create a new PermissionRepository instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Models\Permission $permission
+	 * @param  App\Modules\Kagi\HttpModels\Permission $permission
 	 * @return void
 	 */
 	public function __construct(

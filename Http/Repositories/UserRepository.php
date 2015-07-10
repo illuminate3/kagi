@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\Kagi\Http\Domain\Repositories;
+namespace App\Modules\Kagi\HttpRepositories;
 
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
-use App\Modules\Kagi\Http\Domain\Models\Role;
-use App\Modules\Kagi\Http\Domain\Models\User;
-use App\Modules\Kagi\Http\Domain\Services\Registrar;
+use App\Modules\Kagi\HttpModels\Role;
+use App\Modules\Kagi\HttpModels\User;
+use App\Modules\Kagi\HttpServices\Registrar;
 
 use Auth;
 use Config;
@@ -35,8 +35,8 @@ class UserRepository extends BaseRepository {
 	/**
 	 * Create a new UserRepository instance.
 	 *
-	 * @param  App\Modules\Kagi\Http\Domain\Models\Role $role
-	 * @param  App\Modules\Kagi\Http\Domain\Models\User $user
+	 * @param  App\Modules\Kagi\HttpModels\Role $role
+	 * @param  App\Modules\Kagi\HttpModels\User $user
 	 * @return void
 	 */
 	public function __construct(

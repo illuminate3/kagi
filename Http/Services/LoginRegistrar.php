@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\Kagi\Http\Domain\Services;
+namespace App\Modules\Kagi\HttpServices;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Modules\Kagi\Http\Domain\Models\User;
-use App\Modules\Kagi\Http\Domain\Models\Role;
+use App\Modules\Kagi\HttpModels\User;
+use App\Modules\Kagi\HttpModels\Role;
 
 use DateTime;
 use DB;

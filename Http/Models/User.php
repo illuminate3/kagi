@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Kagi\Http\Domain\Models;
+namespace App\Modules\Kagi\HttpModels;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

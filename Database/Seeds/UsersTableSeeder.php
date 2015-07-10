@@ -5,8 +5,8 @@ use Illuminate\Database\Seeder;
 Use Auth, Config, DB, Eloquent, Model;
 
 use Caffeinated\Shinobi\Models\Role as Role;
-use App\Modules\Kagi\Http\Domain\Models\User as User;
-//use App\Modules\Kagi\Http\Domain\Models\Permission as Permission;
+use App\Modules\Kagi\HttpModels\User as User;
+//use App\Modules\Kagi\HttpModels\Permission as Permission;
 
 class UsersTableSeeder extends Seeder {
 
