@@ -79,6 +79,13 @@ vendor:publish --provider="Caffeinated\Shinobi\ShinobiServiceProvider"
 vendor:publish --provider="GrahamCampbell\Throttle\ThrottleServiceProvider"
 ```
 
+* https://github.com/laravel/socialite
+```
+composer require laravel/socialite
+Laravel\Socialite\SocialiteServiceProvider::class,
+'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+```
+
 
 ## Thanks
 A very special thanks and arigatou! to Kai over at ( https://github.com/caffeinated )

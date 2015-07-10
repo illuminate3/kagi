@@ -12,6 +12,7 @@
 		"caffeinated/themes": "~2.0",
 		"graham-campbell/throttle": "~4.1",
 		"laracasts/presenter": "dev-master",
+	"laravel/socialite": "~2.0",
 		"vinkla/translator": "^2.2"
 	},
 	"config": {
