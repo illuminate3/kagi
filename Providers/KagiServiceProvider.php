@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use App;
 use Config;
 use Lang;
+use Theme;
 use View;
 
 
@@ -27,7 +28,7 @@ class KagiServiceProvider extends ServiceProvider
 		// methods or service providers to keep the code more focused and granular.
 
 		$this->registerNamespaces();
-		$this->registerProviders();
+//		$this->registerProviders();
 	}
 
 	/**
