@@ -20,7 +20,14 @@
 
 	<div class="container">
 		<div class="content">
-			<div class="title">Kagi</div>
+			<a href="/">
+				<img src="/assets/images/kagi.png">
+			</a>
+			<div class="title">
+				<a href="/">
+					Kagi
+				</a>
+			</div>
 			<div class="quote">
 				鍵 : kagi
 				<br>

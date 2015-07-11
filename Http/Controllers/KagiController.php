@@ -41,18 +41,7 @@ class KagiController extends Controller
 	 */
 	public function welcome()
 	{
-		return Theme::View('modules.kagi.general');
-	}
-
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return Theme::View('modules.core.landing');
+		return Theme::View('modules.kagi.welcome.kagi');
 	}
 
 
