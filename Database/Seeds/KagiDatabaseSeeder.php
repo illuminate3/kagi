@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Modules\Kagi\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
+
 class KagiDatabaseSeeder extends Seeder
 {
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -15,7 +18,9 @@ class KagiDatabaseSeeder extends Seeder
 	{
 		Model::unguard();
 
-		// $this->call('App\Modules\Kagi\Database\Seeds\FoobarTableSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder');
+
 	}
+
 
 }

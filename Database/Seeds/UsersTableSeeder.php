@@ -1,25 +1,28 @@
 <?php
+
 namespace App\Modules\Kagi\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-Use Auth, Config, DB, Eloquent, Model;
 
 use Caffeinated\Shinobi\Models\Role as Role;
-use App\Modules\Kagi\HttpModels\User as User;
-//use App\Modules\Kagi\HttpModels\Permission as Permission;
+use App\Modules\Kagi\Http\Models\User as User;
+
+use Config;
+use DB;
+
 
 class UsersTableSeeder extends Seeder {
 
+
 	public function __construct(
 			User $user,
-//			Permission $permission,
 			Role $role
 		)
 	{
 		$this->user = $user;
-//		$this->permission = $permission;
 		$this->role = $role;
 	}
+
 
 	public function run()
 	{

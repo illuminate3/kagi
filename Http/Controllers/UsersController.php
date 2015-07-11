@@ -2,7 +2,7 @@
 
 namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\HttpModels\User;
+use App\Modules\Kagi\Http\Models\User;
 use App\Modules\Kagi\HttpRepositories\UserRepository;
 use App\Modules\Kagi\HttpRepositories\RoleRepository;
 

@@ -2,7 +2,7 @@
 
 namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\HttpModels\Permission;
+use App\Modules\Kagi\Http\Models\Permission;
 use App\Modules\Kagi\HttpRepositories\PermissionRepository;
 
 //use Illuminate\Http\Request;

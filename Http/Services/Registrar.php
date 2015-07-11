@@ -2,7 +2,7 @@
 
 namespace App\Modules\Kagi\HttpServices;
 
-use App\Modules\Kagi\HttpModels\User as User;
+use App\Modules\Kagi\Http\Models\User as User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

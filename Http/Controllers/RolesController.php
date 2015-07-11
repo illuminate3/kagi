@@ -2,7 +2,7 @@
 
 namespace App\Modules\Kagi\Http\Controllers;
 
-use App\Modules\Kagi\HttpModels\Role;
+use App\Modules\Kagi\Http\Models\Role;
 use App\Modules\Kagi\HttpRepositories\RoleRepository;
 
 use Illuminate\Http\Request;

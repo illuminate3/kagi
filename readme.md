@@ -40,6 +40,7 @@ An extension of the very basic User Model that is provided with the Rakko Platfo
 
 ## Install
 
+### .env file
 ```
 GITHUB_CLIENT_ID=
 GITHUB_CLIENT_SECRET=
@@ -48,6 +49,20 @@ GITHUB_REDIRECT=http://www.site.com/social/login
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 GOOGLE_REDIRECT=http://www.site.com/social/login
+```
+
+### publish commands
+
+General Publish "ALL" method
+```
+php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider"
+```
+
+Specific Publish tags
+```
+php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="configs"
+php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="images"
+php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="views"
 ```
 
 

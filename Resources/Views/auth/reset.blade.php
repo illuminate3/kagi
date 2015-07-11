@@ -1,4 +1,4 @@
-@extends('app')
+@extends($theme_back)
 
 @section('content')
 <div class="row">

@@ -42,7 +42,7 @@ trait KagiAuthandRegister {
 		$check = $this->registrar->checkSankaStatus();
 //dd($check);
 		if ( $check != null ) {
-			$payment_settings = \App\Modules\Sanka\HttpModels\PaymentSetting::first();
+			$payment_settings = \App\Modules\Sanka\Http\Models\PaymentSetting::first();
 //dd($payment_settings);
 			return View('sanka::subscription.signup', compact('payment_settings'));
 		}

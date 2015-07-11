@@ -3,8 +3,8 @@
 namespace App\Modules\Kagi\HttpServices;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Modules\Kagi\HttpModels\User;
-use App\Modules\Kagi\HttpModels\Role;
+use App\Modules\Kagi\Http\Models\User;
+use App\Modules\Kagi\Http\Models\Role;
 
 use DateTime;
 use DB;
