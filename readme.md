@@ -1,20 +1,30 @@
 # Kagi (Authentification / Authorization) : Laravel 5.1.x Beta Development
 
 
+## Status / Version
+
+Beta Development
+
+
+## Description
+
+This module is to solve Authentification / Authorization for users.
+This module does not management User information.
+
+
 ## Functionality
 
 
 ### Permissions
-Supplements the main Rakko app's locale functionality.
-Ability to control Locales through the database.
+Permission Mangment
 
 
 ### Roles
-Settings allow you to set key/values to the database or to a .json file
+Role Management
 
 
 ### Users
-Settings allow you to set key/values to the database or to a .json file
+An extension of the very basic User Model that is provided with the Rakko Platform.
 
 
 ## Routes
@@ -43,61 +53,17 @@ GOOGLE_REDIRECT=http://www.site.com/social/login
 
 ## Packages
 
+Intended to be used with:
 
-* https://github.com/illuminate3/kotoba
-```
-"illuminate3/kotoba": "dev-master",
-Illuminate3\Kotoba\KotobaServiceProvider::class,
-```
+* https://github.com/illuminate3/rakkoII
+* https://github.com/illuminate3/profiles
 
-
-* https://github.com/vinkla/translator
-```
-'Vinkla\Translator\TranslatorServiceProvider'
-vendor:publish --provider="Vinkla\Translator\TranslatorServiceProvider"
-```
-
+The Following are packages that are specific to this module:
 
 * https://github.com/caffeinated/shinobi
-```
-composer require caffeinated/shinobi=~2.0
-Caffeinated\Shinobi\ShinobiServiceProvider::class
-```
-
-```
-vendor:publish --provider="Caffeinated\Shinobi\ShinobiServiceProvider"
-```
-
 * https://github.com/GrahamCampbell/Laravel-Throttle
-```
-"graham-campbell/throttle": "~4.1"
-'GrahamCampbell\Throttle\ThrottleServiceProvider'
-'Throttle' => 'GrahamCampbell\Throttle\Facades\Throttle'
-```
-
-```
-vendor:publish --provider="GrahamCampbell\Throttle\ThrottleServiceProvider"
-```
-
 * https://github.com/laravel/socialite
-```
-composer require laravel/socialite
-Laravel\Socialite\SocialiteServiceProvider::class,
-'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-```
 
 
+## Screen Shots
 ## Thanks
-A very special thanks and arigatou! to Kai over at ( https://github.com/caffeinated )
-Thanks for your patience and help!
-
-I also should mention the 2 starter kits for L4. Without them I would never have gotten this far with Laravel.
-
-Also, to Laravel. Besides being a "y'all" know a killer framework from Arkansas,
-but also for making me have to drive on the opposite side of the road again ... or if you rather say,
-the correct side of the road.
-
-
-## Partial Code or Ideas
-
-
