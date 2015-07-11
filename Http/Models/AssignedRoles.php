@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Kagi\HttpModels;
+namespace App\Modules\Kagi\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

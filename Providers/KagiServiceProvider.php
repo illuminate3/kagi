@@ -55,8 +55,8 @@ class KagiServiceProvider extends ServiceProvider
 			__DIR__ . '/../Config/kagi.php' => config_path('kagi.php'),
 			__DIR__ . '/../Config/kagi_services.php' => config_path('kagi_services.php'),
 			__DIR__ . '/../Config/throttle.php' => config_path('throttle.php'),
-			__DIR__ . '/../Resources/Assets/Images/' => public_path('assets/views/images/',
-			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/kagi/',
+			__DIR__ . '/../Resources/Assets/Images/' => public_path('assets/views/images/'),
+			__DIR__ . '/../Resources/Views/' => public_path('themes/' . Theme::getActive() . '/views/modules/kagi/'),
 		]);
 
 
@@ -67,11 +67,11 @@ class KagiServiceProvider extends ServiceProvider
 		], 'configs');
 
 		$this->publishes([
-			__DIR__ . '/../Resources/Assets/Images/' => public_path('assets/views/images/',
+			__DIR__ . '/../Resources/Assets/Images/' => public_path('assets/views/images/'),
 		], 'images');
 
 		$this->publishes([
-			__DIR__ . '/../Resources/Views/' => public_path('themes/') . Theme::getActive() . '/views/modules/kagi/',
+			__DIR__ . '/../Resources/Views/' => public_path('themes/' . Theme::getActive() . '/views/modules/kagi/'),
 		], 'views');
 
 
