@@ -41,7 +41,7 @@ class KagiController extends Controller
 	 */
 	public function welcome()
 	{
-		return Theme::View('modules.core.general');
+		return Theme::View('modules.kagi.general');
 	}
 
 
