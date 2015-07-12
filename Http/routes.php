@@ -32,19 +32,29 @@ Route::group(['prefix' => 'kagi'], function() {
 });
 
 
-Route::get('social/login', 'SocialAuthController@login');
+// Authentication routes...
+Route::get('auth/login', 'AuthController@getLogin');
+Route::post('auth/login', 'AuthController@postLogin');
+Route::get('auth/logout', 'AuthController@getLogout');
+
+// Registration routes...
+Route::get('auth/register', 'AuthController@getRegister');
+Route::post('auth/register', 'AuthController@postRegister');
+
 
 /*
+Route::get('social/login', 'SocialAuthController@login');
+
 Route::controllers([
 	'auth' => 'kagiAuthController',
 	'password' => 'KagiPasswordController',
 ]);
-*/
 
 Route::group(['prefix' => 'auth'], function() {
 	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
 	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
 });
+*/
 
 // API DATA
 

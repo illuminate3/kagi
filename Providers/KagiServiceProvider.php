@@ -79,10 +79,6 @@ class KagiServiceProvider extends ServiceProvider
 			'Socialite',
 			'Laravel\Socialite\Facades\Socialite'
 		);
-		AliasLoader::getInstance()->alias(
-			'Throttle',
-			'GrahamCampbell\Throttle\Facades\Throttle'
-		);
 
 
 	}
@@ -100,7 +96,6 @@ class KagiServiceProvider extends ServiceProvider
 		$app->register('App\Modules\Kagi\Providers\RouteServiceProvider');
 		$app->register('Caffeinated\Shinobi\ShinobiServiceProvider');
 		$app->register('Laravel\Socialite\SocialiteServiceProvider');
-		$app->register('GrahamCampbell\Throttle\ThrottleServiceProvider');
 	}
 
 

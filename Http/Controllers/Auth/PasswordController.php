@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers;
+namespace App\Modules\kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
