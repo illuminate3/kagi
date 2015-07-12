@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Core\Http\Controllers;
+namespace App\Modules\kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -29,8 +29,8 @@ class KagiController extends Controller
 		$this->middleware('auth');
 */
 // middleware
-		$this->middleware('auth');
-		$this->middleware('admin');
+// 		$this->middleware('auth');
+// 		$this->middleware('admin');
 	}
 
 

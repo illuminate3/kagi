@@ -24,16 +24,23 @@ Route::model('role', 'Role');
 
 // Controllers
 
-Route::get('welcome/kagi', array(
-	'uses'=>'KagiController@welcome'
-	));
+
+Route::group(['prefix' => 'kagi'], function() {
+	Route::get('welcome', [
+		'uses'=>'KagiController@welcome'
+	]);
+});
+
 
 Route::get('social/login', 'SocialAuthController@login');
 
+/*
 Route::controllers([
 	'auth' => 'kagiAuthController',
 	'password' => 'KagiPasswordController',
 ]);
+*/
+
 Route::group(['prefix' => 'auth'], function() {
 	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
 	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
@@ -76,9 +83,3 @@ Route::group(['prefix' => 'admin'], function() {
 
 });
 // --------------------------------------------------------------------------
-
-Route::group(['prefix' => 'kagi'], function() {
-	Route::get('/', function() {
-		dd('This is the Kagi module index page.');
-	});
-});

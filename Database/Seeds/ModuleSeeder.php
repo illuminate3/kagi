@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Kantoku\Database\Seeds;
+namespace App\Modules\Kagi\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 Use DB;

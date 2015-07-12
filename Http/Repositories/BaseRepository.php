@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Kagi\HttpRepositories;
+namespace App\Modules\Kagi\Http\Repositories;
 
 abstract class BaseRepository {
 

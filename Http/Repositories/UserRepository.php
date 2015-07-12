@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Kagi\HttpRepositories;
+namespace App\Modules\Kagi\Http\Repositories;
 
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 use App\Modules\Kagi\Http\Models\Role;
