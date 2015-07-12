@@ -18,7 +18,7 @@ class Role extends Model {
 
 
 // Presenter ---------------------------------------------------------------
-	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Role';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
 
 
 // Translation Model -------------------------------------------------------

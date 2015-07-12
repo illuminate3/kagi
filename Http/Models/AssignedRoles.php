@@ -10,8 +10,10 @@ class AssignedRoles extends Model {
 
 	protected $table = 'assigned_roles';
 
+
 // Presenter ---------------------------------------------------------------
-//	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Role';
+//	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
+
 
 // Translation Model -------------------------------------------------------
 // Hidden ------------------------------------------------------------------

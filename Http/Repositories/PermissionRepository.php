@@ -16,6 +16,7 @@ class PermissionRepository extends BaseRepository {
 	 */
 	protected $permission;
 
+
 	/**
 	 * Create a new PermissionRepository instance.
 	 *
@@ -29,6 +30,7 @@ class PermissionRepository extends BaseRepository {
 		$this->model = $permission;
 	}
 
+
 	/**
 	 * Get role collection.
 	 *
@@ -36,12 +38,9 @@ class PermissionRepository extends BaseRepository {
 	 */
 	public function create()
 	{
-//		$select = $this->role->all()->lists('title', 'id');
-//		$statut = $this->getStatut();
-
-//		return compact('select', 'statut');
-//		return compact('select', 'statut');
+		//
 	}
+
 
 	/**
 	 * Get user collection.
@@ -55,6 +54,7 @@ class PermissionRepository extends BaseRepository {
 		return compact('permission');
 	}
 
+
 	/**
 	 * Get all models.
 	 *
@@ -67,6 +67,7 @@ class PermissionRepository extends BaseRepository {
 		$this->model = new Permission;
 		$this->model->create($input);
 	}
+
 
 	/**
 	 * Update a permission.

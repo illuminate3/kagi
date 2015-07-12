@@ -12,6 +12,7 @@ use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
 use Datatables;
 use Flash;
+use Theme;
 
 
 class RolesController extends KagiController {
@@ -23,6 +24,7 @@ class RolesController extends KagiController {
 	 * @var App\Repositories\UserRepository
 	 */
 	protected $role;
+
 
 	/**
 	 * Create a new UserController instance.
@@ -37,8 +39,9 @@ class RolesController extends KagiController {
 		$this->role = $role;
 
 // middleware
-		$this->middleware('admin');
+//		$this->middleware('admin');
 	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -47,8 +50,9 @@ class RolesController extends KagiController {
 	 */
 	public function index()
 	{
-		return View('kagi::roles.index');
+		return Theme::View('kagi::roles.index');
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -57,8 +61,9 @@ class RolesController extends KagiController {
 	 */
 	public function create()
 	{
-		return view('kagi::roles.create',  $this->role->create());
+		return Theme::View('kagi::roles.create',  $this->role->create());
 	}
+
 
 	/**
 	 * Store a newly created resource in storage.
@@ -76,6 +81,7 @@ class RolesController extends KagiController {
 		return redirect('admin/roles');
 	}
 
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -84,9 +90,9 @@ class RolesController extends KagiController {
 	 */
 	public function show($id)
 	{
-dd("show");
-		return View('kagi::roles.show',  $this->role->show($id));
+		//
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -96,8 +102,9 @@ dd("show");
 	 */
 	public function edit($id)
 	{
-		return View('kagi::roles.edit',  $this->role->edit($id));
+		return Theme::View('kagi::roles.edit',  $this->role->edit($id));
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -117,6 +124,7 @@ dd("show");
 		Flash::success( trans('kotoba::role.success.update') );
 		return redirect('admin/roles');
 	}
+
 
 	/**
 	 * Remove the specified resource from storage.

@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 
 // Presenter ---------------------------------------------------------------
-	protected $presenter = 'App\Modules\Kagi\Http\Presenters\User';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
 
 
 // Translation Model -------------------------------------------------------

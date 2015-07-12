@@ -19,6 +19,7 @@ class RoleRepository extends BaseRepository {
 	 */
 	protected $role;
 
+
 	/**
 	 * Create a new RoleRepository instance.
 	 *
@@ -50,6 +51,7 @@ class RoleRepository extends BaseRepository {
 		return compact('allPermissions');
 	}
 
+
 	/**
 	 * Get user collection.
 	 *
@@ -62,8 +64,25 @@ class RoleRepository extends BaseRepository {
 		$permissions = $role->permissions->lists('name', 'id');
 		$allPermissions =  $this->permission->all()->lists('name', 'id');
 
-		return compact('role', 'allPermissions', 'permissions');
+		$modal_title = trans('kotoba::general.command.delete');
+		$modal_body = trans('kotoba::general.ask.delete');
+		$modal_route = 'admin.permissions.destroy';
+		$modal_id = $id;
+		$model = '$role';
+//dd($modal_body);
+
+		return compact(
+			'allPermissions',
+			'permissions',
+			'role',
+			'modal_title',
+			'modal_body',
+			'modal_route',
+			'modal_id',
+			'model'
+		);
 	}
+
 
 	/**
 	 * Get all models.
@@ -80,6 +99,7 @@ class RoleRepository extends BaseRepository {
 		$role = $this->role->find($role_id);
 		$role->syncPermissions($input['my-select']);
 	}
+
 
 	/**
 	 * Update a role.

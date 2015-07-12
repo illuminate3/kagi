@@ -5,7 +5,7 @@ namespace App\Modules\Kagi\Http\Controllers;
 use App\Modules\Kagi\Http\Models\Permission;
 use App\Modules\Kagi\Http\Repositories\PermissionRepository;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\Modules\Kagi\Http\Requests\PermissionCreateRequest;
 use App\Modules\Kagi\Http\Requests\PermissionUpdateRequest;
 use App\Modules\Kagi\Http\Requests\DeleteRequest;
@@ -14,6 +14,7 @@ use Datatables;
 use DB;
 use Flash;
 use Form;
+use Theme;
 
 
 class PermissionsController extends KagiController {
@@ -25,6 +26,7 @@ class PermissionsController extends KagiController {
 	 * @var App\Modules\Kagi\Http\Repositories\PermissionRepository
 	 */
 	protected $permissions;
+
 
 	/**
 	 * Create a new PermissionsController instance.
@@ -39,8 +41,9 @@ class PermissionsController extends KagiController {
 		$this->permission = $permission;
 
 // middleware
-		$this->middleware('admin');
+//		$this->middleware('admin');
 	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -49,8 +52,9 @@ class PermissionsController extends KagiController {
 	 */
 	public function index()
 	{
-		return View('kagi::permissions.index');
+		return Theme::View('kagi::permissions.index');
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -59,8 +63,9 @@ class PermissionsController extends KagiController {
 	 */
 	public function create()
 	{
-		return view('kagi::permissions.create');
+		return Theme::View('kagi::permissions.create');
 	}
+
 
 	/**
 	 * Store a newly created resource in storage.
@@ -79,6 +84,7 @@ class PermissionsController extends KagiController {
 		return redirect('admin/permissions');
 	}
 
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -87,9 +93,9 @@ class PermissionsController extends KagiController {
 	 */
 	public function show($id)
 	{
-dd("show");
-		return View('kagi::permissions.show',  $this->permission->show($id));
+		//
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -99,7 +105,8 @@ dd("show");
 	 */
 	public function edit($id)
 	{
-//dd("edit");
+		$permission = Permission::find($id);
+
 		$modal_title = trans('kotoba::general.command.delete');
 		$modal_body = trans('kotoba::general.ask.delete');
 		$modal_route = 'admin.permissions.destroy';
@@ -107,18 +114,17 @@ dd("show");
 		$model = '$permission';
 //dd($modal_body);
 
-		return View('kagi::permissions.edit',
-//		return Theme::View('modules.general.statuses.edit',
-			$this->permission->edit($id),
-				compact(
-					'modal_title',
-					'modal_body',
-					'modal_route',
-					'modal_id',
-					'model'
-			));
-//		return View('kagi::permissions.edit',  $this->permission->edit($id));
+		return Theme::View('kagi::permissions.edit',
+			compact(
+				'permission',
+				'modal_title',
+				'modal_body',
+				'modal_route',
+				'modal_id',
+				'model'
+		));
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -139,6 +145,7 @@ dd("show");
 		return redirect('admin/permissions');
 	}
 
+
 	/**
 	 * Remove the specified resource from storage.
 	 *
@@ -155,6 +162,7 @@ dd("show");
 		Flash::success( trans('kotoba::permission.success.delete') );
 		return redirect('admin/permissions');
 	}
+
 
 	/**
 	* Datatables data

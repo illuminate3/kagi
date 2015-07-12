@@ -33,7 +33,7 @@
 				<br>
 				noun - key also can refer to the lock itself
 				<br>
-				Kagi is a module for Laravel 5 Authentification and Authorization
+				Authentication, Authorization and User Mangement Module for Rakko
 			</div>
 		</div>
 	</div>

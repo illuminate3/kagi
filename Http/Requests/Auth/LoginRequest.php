@@ -3,7 +3,9 @@ namespace App\Modules\Kagi\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+
 class LoginRequest extends FormRequest {
+
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -15,6 +17,7 @@ class LoginRequest extends FormRequest {
 //dd("loginrequest");
 		return true;
 	}
+
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -28,5 +31,6 @@ class LoginRequest extends FormRequest {
 			'password'			=> 'required',
 		];
 	}
+
 
 }

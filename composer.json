@@ -1,7 +1,7 @@
 {
 	"name": "rakko/kagi",
 	"description": "Authentication / Authorization Functionality for Rakko",
-	"keywords": ["Authentication', 'Authorization", "CMS", "Rakko"],
+	"keywords": ["Authentication', 'Authorization", "users", "CMS", "Rakko"],
 	"require": {
 		"laravel/framework": "5.1.*",
 		"caffeinated/shinobi": "~2.0",

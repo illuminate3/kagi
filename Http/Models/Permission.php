@@ -17,7 +17,8 @@ class Permission extends Model {
 
 
 // Presenter ---------------------------------------------------------------
-	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Permission';
+	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
+
 
 // Translation Model -------------------------------------------------------
 
