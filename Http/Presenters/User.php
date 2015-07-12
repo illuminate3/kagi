@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Modules\Kagi\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
-class User extends Presenter {
 
-//dd('loaded');
+class User extends Presenter {
 
 
 	/**
@@ -18,6 +18,7 @@ class User extends Presenter {
 		return ucwords($this->entity->name);
 	}
 
+
 	/**
 	 * email
 	 *
@@ -27,6 +28,7 @@ class User extends Presenter {
 	{
 		return $this->entity->email;
 	}
+
 
 	/**
 	 * banned checkbox
@@ -47,6 +49,7 @@ class User extends Presenter {
 		return $return;
 	}
 
+
 	/**
 	 * blocked checkbox
 	 *
@@ -63,6 +66,7 @@ class User extends Presenter {
 
 		return $return;
 	}
+
 
 	/**
 	 * confirmed checkbox
@@ -81,6 +85,7 @@ class User extends Presenter {
 		return $return;
 	}
 
+
 	/**
 	 * activated checkbox
 	 *
@@ -97,6 +102,7 @@ class User extends Presenter {
 
 		return $return;
 	}
+
 
 	/**
 	 * banned icon
@@ -118,6 +124,7 @@ class User extends Presenter {
 		return $return;
 	}
 
+
 	/**
 	 * blocked icon
 	 *
@@ -137,6 +144,7 @@ class User extends Presenter {
 
 		return $return;
 	}
+
 
 	/**
 	 * confirmed icon
@@ -158,6 +166,7 @@ class User extends Presenter {
 		return $return;
 	}
 
+
 	/**
 	 * activated icon
 	 *
@@ -177,6 +186,7 @@ class User extends Presenter {
 
 		return $return;
 	}
+
 
 	/**
 	 * roles
@@ -200,5 +210,6 @@ class User extends Presenter {
 
 		return trim($return, ', ');
 	}
+
 
 }

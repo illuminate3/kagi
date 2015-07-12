@@ -5,7 +5,17 @@ namespace App\Modules\Kagi\Http\Repositories;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 use App\Modules\Kagi\Http\Models\Role;
 use App\Modules\Kagi\Http\Models\User;
-use App\Modules\Kagi\HttpServices\Registrar;
+//use App\Modules\Kagi\Http\Services\Registrar;
+
+
+/*
+
+NOTE:
+
+need to redo all events/listeners and Registrars
+
+*/
+
 
 use Auth;
 use Config;
@@ -40,13 +50,13 @@ class UserRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
-		Registrar $registrar,
+//		Registrar $registrar,
 		Role $role,
 		shinobiRole $shinobiRole,
 		User $user
 		)
 	{
-		$this->registrar = $registrar;
+//		$this->registrar = $registrar;
 		$this->role = $role;
 		$this->shinobiRole = $shinobiRole;
 		$this->user = $user;

@@ -45,7 +45,7 @@ jQuery(document).ready(function($) {
 
 
 @if (count($errors) > 0)
-	@include('kagi::_partials.errors')
+	@include($activeTheme . '::' . '_partials.errors')
 @endif
 
 
@@ -143,14 +143,13 @@ jQuery(document).ready(function($) {
 <hr>
 
 
-<div class="form-group">
+<div class="row">
 <div class="col-sm-12">
 	<input class="btn btn-success btn-block" type="submit" value="{{ trans('kotoba::button.save') }}">
 </div>
 </div>
 
-{!! Form::close() !!}
-
+<br>
 
 <div class="row">
 <div class="col-sm-4">
@@ -174,12 +173,14 @@ jQuery(document).ready(function($) {
 </div>
 
 
+{!! Form::close() !!}
+
 </div> <!-- ./ row -->
 
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	@include('_partials.modal')
+	@include($activeTheme . '::' . '_partials.modal')
 </div>
 
 

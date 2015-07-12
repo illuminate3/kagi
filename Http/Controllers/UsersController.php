@@ -13,6 +13,7 @@ use App\Modules\Kagi\Http\Requests\DeleteRequest;
 
 use Datatables;
 use Flash;
+use Theme;
 
 
 class UsersController extends KagiController {
@@ -31,6 +32,7 @@ class UsersController extends KagiController {
 	 * @var App\Repositories\RoleRepository
 	 */
 	protected $role;
+
 
 	/**
 	 * Create a new UserController instance.
@@ -51,6 +53,7 @@ class UsersController extends KagiController {
 //		$this->middleware('admin');
 	}
 
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -58,8 +61,9 @@ class UsersController extends KagiController {
 	 */
 	public function index()
 	{
-		return View('kagi::users.index');
+		return Theme::View('kagi::users.index');
 	}
+
 
 	/**
 	 * Show the form for creating a new resource.
@@ -68,8 +72,9 @@ class UsersController extends KagiController {
 	 */
 	public function create()
 	{
-		return view('kagi::users.create');
+		return Theme::View('kagi::users.create');
 	}
+
 
 	/**
 	 * Store a newly created resource in storage.
@@ -88,6 +93,7 @@ class UsersController extends KagiController {
 		return redirect('admin/users');
 	}
 
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -97,8 +103,9 @@ class UsersController extends KagiController {
 	public function show($id)
 	{
 //dd($this->user->show($id));
-		return View('kagi::users.show',  $this->user->show($id));
+		return Theme::View('kagi::users.show', $this->user->show($id));
 	}
+
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -108,23 +115,30 @@ class UsersController extends KagiController {
 	 */
 	public function edit($id)
 	{
-//dd("edit");
+		$user = User::find($id);
+		$roles = $user->roles->lists('name', 'id');
+		$allRoles =  $this->role->all()->lists('name', 'id');
+//dd($user);
+
 		$modal_title = trans('kotoba::account.command.delete');
 		$modal_body = trans('kotoba::account.ask.delete');
 		$modal_route = 'admin.users.destroy';
 		$modal_id = $id;
 		$model = '$user';
 
-		return View('kagi::users.edit',
-			$this->user->edit($id),
-				compact(
-					'modal_title',
-					'modal_body',
-					'modal_route',
-					'modal_id',
-					'model'
+		return Theme::View('kagi::users.edit',
+			compact(
+				'allRoles',
+				'user',
+				'roles',
+				'modal_title',
+				'modal_body',
+				'modal_route',
+				'modal_id',
+				'model'
 			));
 	}
+
 
 	/**
 	 * Update the specified resource in storage.
@@ -143,6 +157,7 @@ class UsersController extends KagiController {
 		Flash::success( trans('kotoba::account.success.update') );
 		return redirect('admin/users');
 	}
+
 
 	/**
 	 * Remove the specified resource from storage.
@@ -168,6 +183,7 @@ class UsersController extends KagiController {
 		return redirect('admin/users');
 	}
 
+
 	/**
 	* Datatables data
 	*
@@ -177,8 +193,6 @@ class UsersController extends KagiController {
 	{
 //		$query = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
 //			->orderBy('users.email', 'ASC');
-//		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
-//			->orderBy('name', 'ASC');
 		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
 			->orderBy('users.email', 'ASC');
 //dd($query);
