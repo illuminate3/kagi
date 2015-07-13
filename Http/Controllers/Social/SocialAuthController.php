@@ -38,7 +38,24 @@ class SocialAuthController extends Controller
 	{
 		$user = Socialite::driver(Config::get('kagi.kagi_social'))->user();
 
-		// $user->token;
+		// OAuth Two Providers
+		$token = $user->token;
+
+		// OAuth One Providers
+// 		$token = $user->token;
+// 		$tokenSecret = $user->tokenSecret;
+
+		// All Providers
+		$user->getId();
+		$user->getNickname();
+		$user->getName();
+		$user->getEmail();
+		$user->getAvatar();
+
+
+		return redirect('/');
+		$this->auth->login($user, true);
+		return $listener->userHasLoggedIn($user);
 	}
 
 

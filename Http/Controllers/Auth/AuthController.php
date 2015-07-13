@@ -3,17 +3,21 @@
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Modules\kagi\Http\Controllers\Auth\ThrottlesLogins;
 use App\Modules\kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
 
 use App\Modules\Kagi\Http\Models\User;
 
+use Config;
+use Socialite;
 use Validator;
 
 
 class AuthController extends Controller
 {
+
 
 	/*
 	|--------------------------------------------------------------------------
@@ -68,6 +72,49 @@ class AuthController extends Controller
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 		]);
+	}
+
+	/**
+	 * Redirect the user to the GitHub authentication page.
+	 *
+	 * @return Response
+	 */
+	public function redirectToProvider()
+	{
+//		return Socialite::driver(Config::get('kagi.kagi_social'))->redirect();
+		return Socialite::driver('github')->redirect();
+	}
+
+
+	/**
+	 * Obtain the user information from GitHub.
+	 *
+	 * @return Response
+	 */
+	public function handleProviderCallback()
+	{
+//dd('die');
+//		$user = Socialite::driver(Config::get('kagi.kagi_social'))->user();
+$user = Socialite::driver('github')->user();
+		// OAuth Two Providers
+		$token = $user->token;
+
+		// OAuth One Providers
+// 		$token = $user->token;
+// 		$tokenSecret = $user->tokenSecret;
+
+		// All Providers
+		$user->getId();
+		$user->getNickname();
+		$user->getName();
+		$user->getEmail();
+		$user->getAvatar();
+
+dd($user);
+
+		return redirect('/');
+		$this->auth->login($user, true);
+		return $listener->userHasLoggedIn($user);
 	}
 
 }

@@ -62,6 +62,7 @@ Specific Publish tags
 ```
 php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="configs"
 php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="images"
+php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="vendors"
 php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServiceProvider" --tag="views"
 ```
 

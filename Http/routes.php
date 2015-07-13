@@ -50,8 +50,10 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // Social
-Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');
-Route::get('social/login/callback', 'Social\SocialAuthController@handleProviderCallback');
+Route::get('social/login', 'Auth\AuthController@redirectToProvider');
+Route::get('social/login/callback', 'Auth\AuthController@handleProviderCallback');
+// Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');
+// Route::get('social/login/callback', 'Social\SocialAuthController@handleProviderCallback');
 
 /*
 Route::get('social/login', 'SocialAuthController@login');

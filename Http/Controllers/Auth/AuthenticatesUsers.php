@@ -86,6 +86,7 @@ trait AuthenticatesUsers
 			return $this->authenticated($request, Auth::user());
 		}
 
+		Flash::success(trans('kotoba::auth.success.login'));
 		return redirect()->intended($this->redirectPath());
 	}
 
