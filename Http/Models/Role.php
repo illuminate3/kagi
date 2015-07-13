@@ -4,14 +4,15 @@ namespace App\Modules\Kagi\Http\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Laracasts\Presenter\PresentableTrait;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
+use Laracasts\Presenter\PresentableTrait;
 
 
 class Role extends Model {
 
 
-	use PresentableTrait, ShinobiTrait;
+	use PresentableTrait;
+	use ShinobiTrait;
 
 
 	protected $table = 'roles';

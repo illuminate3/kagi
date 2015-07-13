@@ -5,7 +5,7 @@ namespace App\Modules\Kagi\Http\Presenters;
 use Laracasts\Presenter\Presenter;
 
 
-class User extends Presenter {
+class Kagi extends Presenter {
 
 
 	/**

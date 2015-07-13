@@ -15,7 +15,10 @@ use Laracasts\Presenter\PresentableTrait;
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 
-	use Authenticatable, CanResetPassword, PresentableTrait, ShinobiTrait;
+	use Authenticatable;
+	use CanResetPassword;
+	use PresentableTrait;
+	use ShinobiTrait;
 
 
 	protected $table = 'users';
