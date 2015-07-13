@@ -123,6 +123,7 @@ trait AuthenticatesUsers
 	{
 		Auth::logout();
 
+		Flash::error(trans('kotoba::auth.success.logout'));
 		return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
 	}
 

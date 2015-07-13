@@ -3,7 +3,8 @@
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+
+use App\Modules\kagi\Http\Controllers\Auth\ResetsPasswords;
 
 
 class PasswordController extends Controller

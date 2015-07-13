@@ -76,7 +76,6 @@ Intended to be used with:
 The Following are packages that are specific to this module:
 
 * https://github.com/caffeinated/shinobi
-* https://github.com/GrahamCampbell/Laravel-Throttle
 * https://github.com/laravel/socialite
 
 

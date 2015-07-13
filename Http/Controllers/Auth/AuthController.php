@@ -3,6 +3,7 @@
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+
 use App\Modules\kagi\Http\Controllers\Auth\ThrottlesLogins;
 use App\Modules\kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
 

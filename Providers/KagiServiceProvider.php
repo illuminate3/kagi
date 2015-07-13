@@ -54,6 +54,7 @@ class KagiServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../Config/kagi.php' => config_path('kagi.php'),
 			__DIR__ . '/../Config/kagi_services.php' => config_path('kagi_services.php'),
+			__DIR__ . '/../Config/services.php' => config_path('services.php'),
 			__DIR__ . '/../Config/throttle.php' => config_path('throttle.php'),
 			__DIR__ . '/../Resources/Assets/Images/' => public_path('assets/views/images/'),
 			__DIR__ . '/../Resources/Views/' => public_path('themes/' . Theme::getActive() . '/views/modules/kagi/'),
@@ -63,6 +64,7 @@ class KagiServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../Config/kagi.php' => config_path('kagi.php'),
 			__DIR__ . '/../Config/kagi_services.php' => config_path('kagi_services.php'),
+			__DIR__ . '/../Config/services.php' => config_path('services.php'),
 			__DIR__ . '/../Config/throttle.php' => config_path('throttle.php'),
 		], 'configs');
 

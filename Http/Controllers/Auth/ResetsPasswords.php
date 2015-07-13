@@ -21,8 +21,6 @@ trait ResetsPasswords
 	 */
 	public function getEmail()
 	{
-dd('die');
-//		return view('auth.password');
 		return Theme::View('kagi::auth.password');
 	}
 
@@ -58,7 +56,6 @@ dd('die');
 	 */
 	protected function getEmailSubject()
 	{
-//		return isset($this->subject) ? $this->subject : 'Your Password Reset Link';
 		return isset($this->subject) ? $this->subject : trans('kotoba::email.password_link');
 	}
 
@@ -75,7 +72,6 @@ dd('die');
 			throw new NotFoundHttpException;
 		}
 
-//		return view('auth.reset')->with('token', $token);
 		return Theme::View('kagi::auth.reset')->with('token', $token);
 	}
 

@@ -32,26 +32,32 @@ Route::group(['prefix' => 'kagi'], function() {
 });
 
 
-// Authentication routes...
+// Authentication
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-// Registration routes...
+// Registration
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-// Password reset link request routes...
+// Password reset link request
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-// Password reset routes...
+// Password reset
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
+// Social
+Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');
+Route::get('social/login/callback', 'Social\SocialAuthController@handleProviderCallback');
 
 /*
 Route::get('social/login', 'SocialAuthController@login');
+
+Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::controllers([
 	'auth' => 'kagiAuthController',
