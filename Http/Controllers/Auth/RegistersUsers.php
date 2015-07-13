@@ -5,6 +5,8 @@ namespace App\Modules\kagi\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Theme;
+
 
 trait RegistersUsers
 {
@@ -19,7 +21,7 @@ trait RegistersUsers
 	 */
 	public function getRegister()
 	{
-		return view('auth.register');
+		return Theme::View('kagi::auth.register');
 	}
 
 

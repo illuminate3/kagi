@@ -6,8 +6,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
+use Flash;
+use Theme;
+
+
 trait AuthenticatesUsers
 {
+
 
 	use RedirectsUsers;
 
@@ -18,11 +23,7 @@ trait AuthenticatesUsers
 	 */
 	public function getLogin()
 	{
-		if (view()->exists('auth.authenticate')) {
-			return view('auth.authenticate');
-		}
-
-		return view('auth.login');
+		return Theme::View('kagi::auth.login');
 	}
 
 
@@ -108,7 +109,8 @@ trait AuthenticatesUsers
 	 */
 	protected function getFailedLoginMessage()
 	{
-		return 'These credentials do not match our records.';
+//		return 'These credentials do not match our records.';
+		Flash::error(trans('kotoba::auth.error.not_approved'));
 	}
 
 

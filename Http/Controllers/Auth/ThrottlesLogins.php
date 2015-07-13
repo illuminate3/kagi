@@ -91,7 +91,6 @@ trait ThrottlesLogins
 	protected function clearLoginAttempts(Request $request)
 	{
 		Cache::forget($this->getLoginAttemptsKey($request));
-
 		Cache::forget($this->getLoginLockExpirationKey($request));
 	}
 

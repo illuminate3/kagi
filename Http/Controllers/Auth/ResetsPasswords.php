@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Theme;
+
 
 trait ResetsPasswords
 {
@@ -19,7 +21,9 @@ trait ResetsPasswords
 	 */
 	public function getEmail()
 	{
-		return view('auth.password');
+dd('die');
+//		return view('auth.password');
+		return Theme::View('kagi::auth.password');
 	}
 
 
@@ -54,7 +58,8 @@ trait ResetsPasswords
 	 */
 	protected function getEmailSubject()
 	{
-		return isset($this->subject) ? $this->subject : 'Your Password Reset Link';
+//		return isset($this->subject) ? $this->subject : 'Your Password Reset Link';
+		return isset($this->subject) ? $this->subject : trans('kotoba::email.password_link');
 	}
 
 
@@ -70,7 +75,8 @@ trait ResetsPasswords
 			throw new NotFoundHttpException;
 		}
 
-		return view('auth.reset')->with('token', $token);
+//		return view('auth.reset')->with('token', $token);
+		return Theme::View('kagi::auth.reset')->with('token', $token);
 	}
 
 
