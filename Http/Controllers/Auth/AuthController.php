@@ -3,15 +3,14 @@
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 use App\Modules\kagi\Http\Controllers\Auth\ThrottlesLogins;
 use App\Modules\kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
 
+use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
 use App\Modules\Kagi\Http\Models\User;
+use App\Modules\Kagi\Http\Repositories\UserRepository;
 
-use Config;
-use Socialite;
 use Validator;
 
 
@@ -37,8 +36,15 @@ class AuthController extends Controller
 	 *
 	 * @return void
 	 */
-	public function __construct()
+	public function __construct(
+			RegistrarRepository $registrar,
+			UserRepository $user_repo
+		)
 	{
+		$this->registrar = $registrar;
+		$this->user_repo = $user_repo;
+
+// middleware
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
@@ -67,6 +73,7 @@ class AuthController extends Controller
 	 */
 	protected function create(array $data)
 	{
+dd('create');
 		return User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
@@ -74,47 +81,5 @@ class AuthController extends Controller
 		]);
 	}
 
-	/**
-	 * Redirect the user to the GitHub authentication page.
-	 *
-	 * @return Response
-	 */
-	public function redirectToProvider()
-	{
-//		return Socialite::driver(Config::get('kagi.kagi_social'))->redirect();
-		return Socialite::driver('github')->redirect();
-	}
-
-
-	/**
-	 * Obtain the user information from GitHub.
-	 *
-	 * @return Response
-	 */
-	public function handleProviderCallback()
-	{
-//dd('die');
-//		$user = Socialite::driver(Config::get('kagi.kagi_social'))->user();
-$user = Socialite::driver('github')->user();
-		// OAuth Two Providers
-		$token = $user->token;
-
-		// OAuth One Providers
-// 		$token = $user->token;
-// 		$tokenSecret = $user->tokenSecret;
-
-		// All Providers
-		$user->getId();
-		$user->getNickname();
-		$user->getName();
-		$user->getEmail();
-		$user->getAvatar();
-
-dd($user);
-
-		return redirect('/');
-		$this->auth->login($user, true);
-		return $listener->userHasLoggedIn($user);
-	}
 
 }

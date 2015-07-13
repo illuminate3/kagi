@@ -52,6 +52,7 @@ class SocialAuthController extends Controller
 		$user->getEmail();
 		$user->getAvatar();
 
+dd($user);
 
 		return redirect('/');
 		$this->auth->login($user, true);

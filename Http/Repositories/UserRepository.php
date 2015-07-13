@@ -268,16 +268,17 @@ class UserRepository extends BaseRepository {
 		return $user;
 	}
 
+
 	/**
 	 * Update user login timestamp
 	 *
 	 * @param  int  $email
 	 * @return
 	 */
-	public function touchLastLogin($id)
+	public function touchLastLogin($email)
 	{
 		return DB::table('users')
-			->where('id', '=', $id)
+			->where('email', '=', $email)
 			->update([
 				'last_login' => date("Y-m-d H:i:s")
 			]);

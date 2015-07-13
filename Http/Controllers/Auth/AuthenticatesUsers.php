@@ -49,23 +49,31 @@ trait AuthenticatesUsers
 		}
 
 		$credentials = $this->getCredentials($request);
+		$check = $this->user_repo->checkUserApproval($credentials['email']);
+//dd($check);
 
-		if (Auth::attempt($credentials, $request->has('remember'))) {
-			return $this->handleUserWasAuthenticated($request, $throttles);
+		if ( $check == true ) {
+
+			if (Auth::attempt($credentials, $request->has('remember'))) {
+				return $this->handleUserWasAuthenticated($request, $throttles);
+			}
+
+			// If the login attempt was unsuccessful we will increment the number of attempts
+			// to login and redirect the user back to the login form. Of course, when this
+			// user surpasses their maximum number of attempts they will get locked out.
+			if ($throttles) {
+				$this->incrementLoginAttempts($request);
+			}
+
+		} else {
+
+			return redirect($this->loginPath())
+				->withInput($request->only($this->loginUsername(), 'remember'))
+				->withErrors([
+					$this->loginUsername() => $this->getFailedLoginMessage(),
+				]);
+
 		}
-
-		// If the login attempt was unsuccessful we will increment the number of attempts
-		// to login and redirect the user back to the login form. Of course, when this
-		// user surpasses their maximum number of attempts they will get locked out.
-		if ($throttles) {
-			$this->incrementLoginAttempts($request);
-		}
-
-		return redirect($this->loginPath())
-			->withInput($request->only($this->loginUsername(), 'remember'))
-			->withErrors([
-				$this->loginUsername() => $this->getFailedLoginMessage(),
-			]);
 	}
 
 
@@ -78,6 +86,7 @@ trait AuthenticatesUsers
 	 */
 	protected function handleUserWasAuthenticated(Request $request, $throttles)
 	{
+
 		if ($throttles) {
 			$this->clearLoginAttempts($request);
 		}
@@ -86,7 +95,9 @@ trait AuthenticatesUsers
 			return $this->authenticated($request, Auth::user());
 		}
 
+		$check = $this->user_repo->touchLastLogin($request->email);
 		Flash::success(trans('kotoba::auth.success.login'));
+
 		return redirect()->intended($this->redirectPath());
 	}
 

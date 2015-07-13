@@ -47,4 +47,62 @@ trait RegistersUsers
 	}
 
 
+/*
+|--------------------------------------------------------------------------
+| Confirm Users
+|--------------------------------------------------------------------------
+*/
+
+	/**
+	 * Attempt to confirm account with code
+	 *
+	 * @param  string $code
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function getConfirm($code)
+	{
+//dd($code);
+
+		$confirmedCode = $this->registrar->confirmCode($code);
+
+		if ( $confirmedCode == true ) {
+//			Flash::success( trans('kotoba::auth.success.confirmation') );
+			return View('kagi::auth.confirm')->with(compact("code"));
+		} else {
+			Flash::error( trans('kotoba::auth.error.confirmation') );
+			return View('kagi::auth.confirm')->with(compact("code"));
+		}
+	}
+
+
+	/**
+	 * Attempt to confirm account with email and then change confirmed status
+	 *
+	 * @param  string $code
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postConfirm(
+		Request $request,
+		$code
+		)
+	{
+//dd($code);
+		$user = $this->registrar->confirmEmail($request->email);
+
+		if ( $user != null) {
+			$this->registrar->confirmUser($user);
+			$this->registrar->activateUser($user);
+
+			Flash::success( trans('kotoba::auth.success.login') );
+			return redirect($this->redirectPath());
+		} else {
+
+			Flash::error( trans('kotoba::auth.error.email') );
+			return redirect('auth/confirm/'.$code)
+				->withInput($request->only('email'));
+		}
+
+	}
+
+
 }
