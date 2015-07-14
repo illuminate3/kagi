@@ -246,4 +246,64 @@ class UserRepository extends BaseRepository {
 	}
 
 
+	public function checkUserExists($email)
+	{
+		$user = DB::table('users')
+			->where('email', '=', $email)
+			->first();
+//dd($user);
+
+		return $user;
+	}
+
+
+	public function createSocialUser($user)
+	{
+		$name							= $user->name;
+		$email							= $user->email;
+		$avatar							= $user->avatar;
+
+		if ( ($name == null) || ($name == '') ) {
+			$name = $email;
+		}
+
+		if ( ($avatar == null) || ($avatar == '') ) {
+			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+
+		$date = date("Y-m-d H:i:s");
+
+		User::create([
+			'name'					=> $name,
+			'email'					=> $email,
+			'password'				=> Hash::make($email),
+			'avatar'				=> $avatar,
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'activated_at'			=> $date,
+			'last_login'			=> $date,
+			'avatar'				=> $avatar,
+			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
+		]);
+	}
+
+
+	/**
+	 * Update user login timestamp
+	 *
+	 * @param  int  $email
+	 * @return
+	 */
+	public function touchLastLogin($email)
+	{
+		return DB::table('users')
+			->where('email', '=', $email)
+			->update([
+				'last_login' => date("Y-m-d H:i:s")
+			]);
+	}
+
+
 }

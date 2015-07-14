@@ -4,14 +4,15 @@ namespace App\Modules\kagi\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\kagi\Http\Controllers\Auth\ThrottlesLogins;
-use App\Modules\kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
+use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
-use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
-use App\Modules\Kagi\Http\Models\User;
+//use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
+use App\Http\Models\User;
 use App\Modules\Kagi\Http\Repositories\UserRepository;
 
+use Auth;
 use Config;
+use Flash;
 use Socialite;
 use Validator;
 
@@ -20,12 +21,22 @@ class SocialAuthController extends Controller
 {
 
 
+	use ShinobiTrait;
+
+	private $auth;
+
+
+
 	public function __construct(
-			RegistrarRepository $registrar_repo,
+//			Guard $auth,
+//			RegistrarRepository $registrar_repo,
+			User $user,
 			UserRepository $user_repo
 		)
 	{
-		$this->registrar_repo = $registrar_repo;
+//		$this->auth = $auth;
+//		$this->registrar_repo = $registrar_repo;
+		$this->user = $user;
 		$this->user_repo = $user_repo;
 
 // middleware
@@ -70,39 +81,36 @@ class SocialAuthController extends Controller
 		$social_avatar = $user->getAvatar();
 */
 
-		$check_if_exists = $this->registrar_repo->checkUserExists($social_name, $social_email);
+		$check = $this->user_repo->checkUserExists($user->email);
 
-		if ($check_if_exists == null) {
-			$this->registrar_repo->createSocialUser($social_name, $social_email);
+		if ($check == null) {
+
+			$this->user_repo->createSocialUser($user);
+
+			$check = $this->user_repo->checkUserExists($user->email);
+			$user = $this->user_repo->find($check->id);
+			$user->syncRoles([Config::get('kagi.default_role')]);
+
 		}
 
-use Caffeinated\Shinobi\Models\Role as shinobiRole;
-		shinobiRole $shinobiRole,
+		if ( Auth::attempt(['email' => $check->email, 'password' => $check->email]) ) {
+			Auth::loginUsingId($check->id);
+			$this->user_repo->touchLastLogin($check->email);
+//dd(Auth::user());
 
-$check_again = $this->checkUserExists($name, $email);
-$user = $this->user->find($check_again->id);
-
-$user->syncRoles([Config::get('kagi.default_role')]);
-
-\Event::fire(new \ProfileWasCreated($check_again));
-\Event::fire(new \EmployeeWasCreated($check_again));
-
-return $user;
-
-} else {
-//dd($check);
-$this->touchLastLogin($check->id);
+			Flash::success(trans('kotoba::auth.success.login'));
+//			return redirect(Config::get('kagi.new_user_return_path'));
+			return redirect()->intended(Config::get('kagi.new_user_return_path'));
+		}
 
 
-
-dd('good');
+dd('nope');
+		$this->registrar_repo->touchLastLogin($user->email);
+		Flash::success(trans('kotoba::auth.success.login'));
+		return redirect()->intended(Config::get('kagi.new_user_return_path'));
 
 
 
-
-// 		return redirect('/');
-// 		$this->auth->login($user, true);
-// 		return $listener->userHasLoggedIn($user);
 	}
 
 

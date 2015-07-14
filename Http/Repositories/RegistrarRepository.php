@@ -30,38 +30,6 @@ class RegistrarRepository extends BaseRepository {
 */
 
 
-	public function createSocialUser($user)
-	{
-		$name							= $user->name;
-		$email							= $user->email;
-		$avatar							= $user->avatar;
-
-		if ( ($name == null) || ($name == '') ) {
-			$name = $email;
-		}
-
-		if ( ($avatar == null) || ($avatar == '') ) {
-			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
-		}
-
-		$date = date("Y-m-d H:i:s");
-
-		User::create([
-			'name'					=> $name,
-			'email'					=> $email,
-			'avatar'				=> $avatar,
-			'blocked'				=> 0,
-			'banned'				=> 0,
-			'confirmed'				=> 1,
-			'activated'				=> 1,
-			'activated_at'			=> $date,
-			'last_login'			=> $date,
-			'avatar'				=> $avatar,
-			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
-		]);
-	}
-
-
 	/**
 	 * Create a new user instance after a valid registration.
 	 *
@@ -121,18 +89,6 @@ class RegistrarRepository extends BaseRepository {
 			$message->to($email, $name);
 			$message->subject(Config::get('kagi.site_name').Config::get('kagi.separator').trans('kotoba::email.confirmation.confirm'));
 		});
-	}
-
-
-	public function checkUserExists($name, $email)
-	{
-		$user = DB::table('users')
-			->where('name', '=', $name)
-			->where('email', '=', $email, 'AND')
-			->first();
-//dd($user);
-
-		return $user;
 	}
 
 
