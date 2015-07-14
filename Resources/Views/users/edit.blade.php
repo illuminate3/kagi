@@ -44,11 +44,6 @@ jQuery(document).ready(function($) {
 </div>
 
 
-@if (count($errors) > 0)
-	@include($activeTheme . '::' . '_partials.errors')
-@endif
-
-
 <div class="row">
 {!! Form::model(
 	$user,

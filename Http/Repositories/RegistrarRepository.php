@@ -24,10 +24,42 @@ class RegistrarRepository extends BaseRepository {
 
 
 /*
-|--------------------------------------------------------------------------
-| Register User
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
+| Create
+|---------------------------------------------------------------------------
 */
+
+
+	public function createSocialUser($user)
+	{
+		$name							= $user->name;
+		$email							= $user->email;
+		$avatar							= $user->avatar;
+
+		if ( ($name == null) || ($name == '') ) {
+			$name = $email;
+		}
+
+		if ( ($avatar == null) || ($avatar == '') ) {
+			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+
+		$date = date("Y-m-d H:i:s");
+
+		User::create([
+			'name'					=> $name,
+			'email'					=> $email,
+			'avatar'				=> $avatar,
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'activated_at'			=> $date,
+			'last_login'			=> $date,
+			'avatar'				=> $avatar,
+			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
+		]);
+	}
 
 
 	/**
@@ -67,6 +99,13 @@ class RegistrarRepository extends BaseRepository {
 	}
 
 
+/*
+|---------------------------------------------------------------------------
+| Register
+|---------------------------------------------------------------------------
+*/
+
+
 	/**
 	 * Send confirmation email to user
 	 *
@@ -82,6 +121,167 @@ class RegistrarRepository extends BaseRepository {
 			$message->to($email, $name);
 			$message->subject(Config::get('kagi.site_name').Config::get('kagi.separator').trans('kotoba::email.confirmation.confirm'));
 		});
+	}
+
+
+	public function checkUserExists($name, $email)
+	{
+		$user = DB::table('users')
+			->where('name', '=', $name)
+			->where('email', '=', $email, 'AND')
+			->first();
+//dd($user);
+
+		return $user;
+	}
+
+
+	/**
+	 * @param $userData
+	 * @return static
+	 */
+	public function findByUsernameOrCreateGithub($userData)
+	{
+//dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated', "avatar'];
+//dd($userData->email);
+
+		if ($userData->name == null) {
+			$userData->name = $userData->nickname;
+		}
+		if ($userData->email == null) {
+			$userData->email = $userData->nickname;
+		}
+		if ($userData->avatar == null) {
+			$userData->avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+		$date = date("Y-m-d H:i:s");
+
+		$name							= $userData->name;
+		$email							= $userData->email;
+		$avatar							= $userData->avatar;
+
+		$check = $this->checkUserExists($name, $email);
+		if ($check == null) {
+			User::create([
+				'name'					=> $name,
+				'email'					=> $email,
+				'avatar'				=> $avatar,
+				'blocked'				=> 0,
+				'banned'				=> 0,
+				'confirmed'				=> 1,
+				'activated'				=> 1,
+				'activated_at'			=> $date,
+				'last_login'			=> $date,
+				'avatar'				=> $avatar,
+				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+			]);
+
+			$check_again = $this->checkUserExists($name, $email);
+//dd($check_again->id);
+			$user = $this->user->find($check_again->id);
+			$user->syncRoles([Config::get('kagi.default_role')]);
+
+			\Event::fire(new \ProfileWasCreated($check_again));
+			\Event::fire(new \EmployeeWasCreated($check_again));
+
+			return $user;
+
+		} else {
+//dd($check);
+			$this->touchLastLogin($check->id);
+
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+		}
+
+	}
+
+	public function findByUsernameOrCreateGoogle($userData)
+	{
+//dd($userData);
+//	protected $fillable = ['name', 'email', 'password', 'blocked', 'banned', 'confirmed', 'activated'];
+
+		if ($userData->name == null) {
+			$userData->name = $userData->nickname;
+		}
+		if ($userData->email == null) {
+			$userData->email = $userData->nickname;
+		}
+		if ($userData->avatar == null) {
+			$userData->avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+		$date = date("Y-m-d H:i:s");
+
+		$name							= $userData->name;
+		$email							= $userData->email;
+		$avatar							= $userData->avatar;
+
+		$check = $this->checkUserExists($name, $email);
+//dd($check);
+		if ($check == null) {
+			User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+				'avatar'				=> $avatar,
+				'activated_at'			=> date("Y-m-d H:i:s"),
+				'blocked'				=> 0,
+				'banned'				=> 0,
+				'confirmed'				=> 1,
+				'activated'				=> 1,
+				'activated_at'			=> $date,
+				'last_login'			=> $date,
+				'avatar'				=> $avatar,
+				'confirmation_code'		=> md5(microtime().Config::get('app.key'))
+			]);
+
+			$check_again = $this->checkUserExists($name, $email);
+//dd($check_again->id);
+			$user = $this->user->find($check_again->id);
+			$user->syncRoles([Config::get('kagi.default_role')]);
+
+			\Event::fire(new \ProfileWasCreated($check_again));
+			\Event::fire(new \EmployeeWasCreated($check_again));
+
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+
+		} else {
+//dd($check);
+			$this->touchLastLogin($check->id);
+
+			return User::firstOrCreate([
+				'name'					=> $name,
+				'email'					=> $email,
+			]);
+		}
+	}
+
+
+/*
+|---------------------------------------------------------------------------
+| Login
+|---------------------------------------------------------------------------
+*/
+
+
+	/**
+	 * Update user login timestamp
+	 *
+	 * @param  int  $email
+	 * @return
+	 */
+	public function touchLastLogin($email)
+	{
+		return DB::table('users')
+			->where('email', '=', $email)
+			->update([
+				'last_login' => date("Y-m-d H:i:s")
+			]);
 	}
 
 
@@ -120,9 +320,9 @@ class RegistrarRepository extends BaseRepository {
 
 
 /*
-|--------------------------------------------------------------------------
-| Confirm User
-|--------------------------------------------------------------------------
+|---------------------------------------------------------------------------
+| Confirm
+|---------------------------------------------------------------------------
 */
 
 

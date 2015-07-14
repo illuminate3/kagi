@@ -37,11 +37,11 @@ class AuthController extends Controller
 	 * @return void
 	 */
 	public function __construct(
-			RegistrarRepository $registrar,
+			RegistrarRepository $registrar_repo,
 			UserRepository $user_repo
 		)
 	{
-		$this->registrar = $registrar;
+		$this->registrar_repo = $registrar_repo;
 		$this->user_repo = $user_repo;
 
 // middleware
@@ -71,15 +71,16 @@ class AuthController extends Controller
 	 * @param  array  $data
 	 * @return User
 	 */
+/*
 	protected function create(array $data)
 	{
-dd('create');
 		return User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => bcrypt($data['password']),
 		]);
 	}
+*/
 
 
 }

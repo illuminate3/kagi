@@ -49,10 +49,9 @@ trait AuthenticatesUsers
 		}
 
 		$credentials = $this->getCredentials($request);
-		$check = $this->user_repo->checkUserApproval($credentials['email']);
-//dd($check);
+		$check_if_no_bans = $this->registrar_repo->checkUserApproval($credentials['email']);
 
-		if ( $check == true ) {
+		if ( $check_if_no_bans == true ) {
 
 			if (Auth::attempt($credentials, $request->has('remember'))) {
 				return $this->handleUserWasAuthenticated($request, $throttles);
@@ -65,7 +64,7 @@ trait AuthenticatesUsers
 				$this->incrementLoginAttempts($request);
 			}
 
-		} else {
+		}
 
 			return redirect($this->loginPath())
 				->withInput($request->only($this->loginUsername(), 'remember'))
@@ -73,7 +72,6 @@ trait AuthenticatesUsers
 					$this->loginUsername() => $this->getFailedLoginMessage(),
 				]);
 
-		}
 	}
 
 
@@ -95,7 +93,7 @@ trait AuthenticatesUsers
 			return $this->authenticated($request, Auth::user());
 		}
 
-		$check = $this->user_repo->touchLastLogin($request->email);
+		$check = $this->registrar_repo->touchLastLogin($request->email);
 		Flash::success(trans('kotoba::auth.success.login'));
 
 		return redirect()->intended($this->redirectPath());

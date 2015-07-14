@@ -8,10 +8,6 @@
 				<div class="panel-heading">{{ trans('kotoba::auth.reset_password') }}</div>
 				<div class="panel-body">
 
-				@if (count($errors) > 0)
-					@include('kagi::_partials.errors')
-				@endif
-
 					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="hidden" name="token" value="{{ $token }}">

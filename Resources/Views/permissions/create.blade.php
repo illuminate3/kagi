@@ -33,9 +33,6 @@
 </div>
 
 
-@include($activeTheme . '::' . '_partials.errors')
-
-
 <div class="row">
 {!! Form::open([
 	'url' => 'admin/permissions',
