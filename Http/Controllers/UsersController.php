@@ -89,6 +89,9 @@ class UsersController extends KagiController {
 	{
 //dd($request);
 		$this->user->store($request->all());
+
+		\Event::fire(new \ProfileWasCreated($get_user_info));
+
 		Flash::success( trans('kotoba::account.success.create') );
 		return redirect('admin/users');
 	}

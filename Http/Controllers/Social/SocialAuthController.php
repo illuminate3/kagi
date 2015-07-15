@@ -93,6 +93,8 @@ class SocialAuthController extends Controller
 			$new_user = $this->user->find($new_user->id);
 			$new_user->syncRoles([Config::get('kagi.default_role')]);
 
+			\Event::fire(new \ProfileWasCreated($new_user));
+
 		}
 
 		$login_user = $this->user_repo->getUserInfo($user->email);
@@ -106,13 +108,7 @@ class SocialAuthController extends Controller
 			return redirect()->intended(Config::get('kagi.new_user_return_path'));
 		}
 
-
-dd('nope');
-		$this->registrar_repo->touchLastLogin($user->email);
-		Flash::success(trans('kotoba::auth.success.login'));
-		return redirect()->intended(Config::get('kagi.new_user_return_path'));
-
-
+		return redirect('social/login');
 
 	}
 
