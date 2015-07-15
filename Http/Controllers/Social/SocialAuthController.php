@@ -27,7 +27,6 @@ class SocialAuthController extends Controller
 	private $auth;
 
 
-
 	public function __construct(
 //			Guard $auth,
 //			RegistrarRepository $registrar_repo,
@@ -93,7 +92,7 @@ class SocialAuthController extends Controller
 			$new_user = $this->user->find($new_user->id);
 			$new_user->syncRoles([Config::get('kagi.default_role')]);
 
-			\Event::fire(new \ProfileWasCreated($new_user));
+//			\Event::fire(new \ProfileWasCreated($new_user));
 
 		}
 
