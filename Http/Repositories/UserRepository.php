@@ -246,7 +246,7 @@ class UserRepository extends BaseRepository {
 	}
 
 
-	public function checkUserExists($email)
+	public function getUserInfo($email)
 	{
 		$user = DB::table('users')
 			->where('email', '=', $email)
