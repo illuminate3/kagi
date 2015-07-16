@@ -39,9 +39,9 @@ class PermissionsController extends KagiController {
 		)
 	{
 		$this->permission = $permission;
-
 // middleware
-//		$this->middleware('admin');
+		$this->middleware('auth');
+		$this->middleware('admin');
 	}
 
 
