@@ -94,7 +94,7 @@ class SocialAuthController extends Controller
 //dd(Auth::user());
 
 			Flash::success(trans('kotoba::auth.success.login'));
-			return redirect()->intended(Config::get('kagi.new_user_return_path'));
+			return redirect()->intended(Config::get('kagi.new_user_return_path', '/'));
 		}
 
 		return redirect('social/login');

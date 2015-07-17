@@ -49,7 +49,10 @@ class UsersController extends KagiController {
 		$this->user = $user;
 		$this->role = $role;
 // middleware
-		$this->middleware('auth');
+		parent::__construct();
+// middleware
+// 		$this->middleware('auth');
+// 		$this->middleware('admin');
 	}
 
 

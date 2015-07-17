@@ -40,8 +40,10 @@ class PermissionsController extends KagiController {
 	{
 		$this->permission = $permission;
 // middleware
-		$this->middleware('auth');
-		$this->middleware('admin');
+		parent::__construct();
+// middleware
+// 		$this->middleware('auth');
+// 		$this->middleware('admin');
 	}
 
 

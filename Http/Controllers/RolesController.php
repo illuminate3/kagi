@@ -38,8 +38,10 @@ class RolesController extends KagiController {
 	{
 		$this->role = $role;
 // middleware
-		$this->middleware('auth');
-		$this->middleware('admin');
+		parent::__construct();
+// middleware
+// 		$this->middleware('auth');
+// 		$this->middleware('admin');
 	}
 
 
