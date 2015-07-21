@@ -33,11 +33,14 @@ trait ResetsPasswords
 	 */
 	public function postEmail(Request $request)
 	{
+//dd($request);
+
 		$this->validate($request, ['email' => 'required|email']);
 
 		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
 			$message->subject($this->getEmailSubject());
 		});
+dd($response);
 
 		switch ($response) {
 			case Password::RESET_LINK_SENT:

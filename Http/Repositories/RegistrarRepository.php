@@ -9,7 +9,9 @@ use Config;
 use DateTime;
 use DB;
 use Eloquent;
+use Flash;
 use Hash;
+use Mail;
 
 
 class RegistrarRepository extends BaseRepository {
@@ -50,7 +52,7 @@ class RegistrarRepository extends BaseRepository {
 			'confirmation_code'	=> $confirmation_code,
 			'name'				=> $name,
 			'email'				=> $email,
-			'password'			=> bcrypt($data['password'])
+			'password'			=>  Hash::make($data['password'])
 /*
 			'activated_at'		=> date("Y-m-d H:i:s"),
 			'blocked'			=> 0,

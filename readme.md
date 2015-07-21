@@ -67,6 +67,10 @@ php artisan vendor:publish --provider="App\Modules\Kagi\Providers\KagiServicePro
 ```
 
 
+## Email Testing
+http://mailcatcher.me/ was used to test email on localhost
+
+
 ## Packages
 
 Intended to be used with:

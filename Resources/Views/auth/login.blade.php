@@ -27,7 +27,7 @@
 		<div role="tabpanel" class="tab-pane" id="login">
 
 				<form class="form-horizontal margin-top-xl" role="form" method="POST" action="/auth/login">
-					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					{!! csrf_field() !!}
 
 					<div class="form-group">
 						<label class="col-md-3 control-label">{{ trans('kotoba::account.email') }}</label>

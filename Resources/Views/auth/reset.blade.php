@@ -9,7 +9,7 @@
 				<div class="panel-body">
 
 					<form class="form-horizontal" role="form" method="POST" action="/password/reset">
-						<input type="hidden" name="_token" value="{{ csrf_token() }}">
+						{!! csrf_field() !!}
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">

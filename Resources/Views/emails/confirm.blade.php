@@ -15,6 +15,7 @@
 			<br>
 			<br>
 			{{ url('auth/confirm/'.$confirmation_code) }}
+			{{ url('password/reset/'.$token) }}
 		</div>
 
 	</body>

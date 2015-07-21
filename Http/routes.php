@@ -41,6 +41,20 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+Route::group(['prefix' => 'auth'], function() {
+	Route::get('confirm/{code}', 'Auth\AuthController@getConfirm');
+	Route::post('confirm/{code}', 'Auth\AuthController@postConfirm');
+});
+
+// Password reset link request routes...
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+
 // Password reset link request
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
@@ -50,8 +64,6 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 // Social
-// Route::get('social/login', 'Auth\AuthController@redirectToProvider');
-// Route::get('social/login/callback', 'Auth\AuthController@handleProviderCallback');
 Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');
 Route::get('social/login/callback', 'Social\SocialAuthController@handleProviderCallback');
 
@@ -62,14 +74,9 @@ Route::get('auth/github', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\AuthController@handleProviderCallback');
 
 Route::controllers([
-	'auth' => 'kagiAuthController',
-	'password' => 'KagiPasswordController',
+	'password' => 'Auth\AuthController',
 ]);
 
-Route::group(['prefix' => 'auth'], function() {
-	Route::get('confirm/{code}', 'kagiAuthController@getConfirm');
-	Route::post('confirm/{code}', 'kagiAuthController@postConfirm');
-});
 */
 
 // API DATA

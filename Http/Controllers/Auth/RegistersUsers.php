@@ -5,6 +5,7 @@ namespace App\Modules\kagi\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Flash;
 use Theme;
 
 
@@ -33,7 +34,9 @@ trait RegistersUsers
 	 */
 	public function postRegister(Request $request)
 	{
+//dd($request);
 		$validator = $this->validator($request->all());
+//dd($validator);
 
 		if ($validator->fails()) {
 			$this->throwValidationException(
@@ -41,8 +44,10 @@ trait RegistersUsers
 			);
 		}
 
-		Auth::login($this->create($request->all()));
+//		Auth::login($this->create($request->all()));
+		$this->registrar_repo->create($request->all());
 
+		Flash::warning(trans('kotoba::email.success.sent'));
 		return redirect($this->redirectPath());
 	}
 
@@ -63,7 +68,7 @@ trait RegistersUsers
 	{
 //dd($code);
 
-		$confirmedCode = $this->registrar->confirmCode($code);
+		$confirmedCode = $this->registrar_repo->confirmCode($code);
 
 		if ( $confirmedCode == true ) {
 //			Flash::success( trans('kotoba::auth.success.confirmation') );
@@ -87,11 +92,12 @@ trait RegistersUsers
 		)
 	{
 //dd($code);
-		$user = $this->registrar->confirmEmail($request->email);
+		$user = $this->registrar_repo->confirmEmail($request->email);
+//dd($user);
 
 		if ( $user != null) {
-			$this->registrar->confirmUser($user);
-			$this->registrar->activateUser($user);
+			$this->registrar_repo->confirmUser($user);
+			$this->registrar_repo->activateUser($user);
 
 			Flash::success( trans('kotoba::auth.success.login') );
 			return redirect($this->redirectPath());
