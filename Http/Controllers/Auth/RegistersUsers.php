@@ -5,6 +5,7 @@ namespace App\Modules\kagi\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Config;
 use Flash;
 use Theme;
 
@@ -45,10 +46,11 @@ trait RegistersUsers
 		}
 
 //		Auth::login($this->create($request->all()));
-		$this->registrar_repo->create($request->all());
+//		$this->registrar_repo->create($request->all());
+		$this->user_repo->store($request->all());
 
-		Flash::warning(trans('kotoba::email.success.sent'));
-		return redirect($this->redirectPath());
+		Flash::success(trans('kotoba::email.success.sent'));
+		return Theme::View('kagi::auth.login');
 	}
 
 
@@ -69,13 +71,14 @@ trait RegistersUsers
 //dd($code);
 
 		$confirmedCode = $this->registrar_repo->confirmCode($code);
+//dd($confirmedCode);
 
-		if ( $confirmedCode == true ) {
-//			Flash::success( trans('kotoba::auth.success.confirmation') );
-			return View('kagi::auth.confirm')->with(compact("code"));
+		if ( $confirmedCode != null ) {
+			Flash::success( trans('kotoba::auth.success.confirmation') );
+			return Theme::View('kagi::auth.confirm')->with(compact('code'));
 		} else {
 			Flash::error( trans('kotoba::auth.error.confirmation') );
-			return View('kagi::auth.confirm')->with(compact("code"));
+			return Theme::View('kagi::auth.login');
 		}
 	}
 
@@ -99,8 +102,8 @@ trait RegistersUsers
 			$this->registrar_repo->confirmUser($user);
 			$this->registrar_repo->activateUser($user);
 
-			Flash::success( trans('kotoba::auth.success.login') );
-			return redirect($this->redirectPath());
+			Flash::success( trans('kotoba::auth.success.confirmed') );
+			return Theme::View('kagi::auth.login');
 		} else {
 
 			Flash::error( trans('kotoba::auth.error.email') );

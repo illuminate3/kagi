@@ -5,6 +5,7 @@ namespace App\Modules\Kagi\Http\Repositories;
 use Caffeinated\Shinobi\Models\Role as shinobiRole;
 use App\Modules\Kagi\Http\Models\Role;
 use App\Modules\Kagi\Http\Models\User;
+use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
 
 use Auth;
 use Config;
@@ -39,13 +40,13 @@ class UserRepository extends BaseRepository {
 	 * @return void
 	 */
 	public function __construct(
-//		Registrar $registrar,
+		RegistrarRepository $registrar_repo,
 		Role $role,
 		shinobiRole $shinobiRole,
 		User $user
 		)
 	{
-//		$this->registrar = $registrar;
+		$this->registrar_repo = $registrar_repo;
 		$this->role = $role;
 		$this->shinobiRole = $shinobiRole;
 		$this->user = $user;
@@ -105,6 +106,14 @@ class UserRepository extends BaseRepository {
 		$email							= $userData['email'];
 		$password						= Hash::make($userData['password']);
 
+/*
+		if ( isset($userData['password']) ) {
+			$password =Hash::make($userData['password']);
+		} else {
+			$blocked = 0;
+		}
+*/
+
 		if ( isset($userData['blocked']) ) {
 			$blocked = $userData['blocked'];
 		} else {
@@ -119,10 +128,12 @@ class UserRepository extends BaseRepository {
 
 		if ( isset($userData['confirmed']) ) {
 			$confirmed = $userData['confirmed'];
-			$confirmation_code = md5(microtime().Config::get('app.key'));
+//			$confirmation_code = md5(microtime().Config::get('app.key'));
+			$confirmation_code = md5(uniqid(mt_rand(), true));
 		} else {
 			$confirmed = 0;
-			$confirmation_code = '';
+//			$confirmation_code = '';
+			$confirmation_code = md5(uniqid(mt_rand(), true));
 		}
 
 		if ( isset($userData['activated']) ) {
@@ -145,24 +156,12 @@ class UserRepository extends BaseRepository {
 			'confirmation_code'		=> $confirmation_code
 		]);
 
-		$check_again = $this->checkUserExists($name, $email);
+		$check_again = $this->getUserInfo($email);
 //dd($check_again->id);
 		$user = $this->user->find($check_again->id);
 		$user->syncRoles([Config::get('kagi.default_role')]);
 
-		\Event::fire(new \ProfileWasCreated($check_again));
-
-		$check = $this->registrar->checkJinjiStatus();
-//dd($check);
-		if ( $check != null ) {
-			\Event::fire(new \EmployeeWasCreated($check_again));
-		}
-
-		$check = $this->registrar->checkSankaStatus();
-//dd($check);
-		if ( $check != null ) {
-			\Event::fire(new \MemberWasCreated($check_again));
-		}
+		$this->registrar_repo->sendConfirmation($name, $email, $confirmation_code);
 
 	}
 
@@ -287,22 +286,6 @@ class UserRepository extends BaseRepository {
 			'avatar'				=> $avatar,
 			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
 		]);
-	}
-
-
-	/**
-	 * Update user login timestamp
-	 *
-	 * @param  int  $email
-	 * @return
-	 */
-	public function touchLastLogin($email)
-	{
-		return DB::table('users')
-			->where('email', '=', $email)
-			->update([
-				'last_login' => date("Y-m-d H:i:s")
-			]);
 	}
 
 

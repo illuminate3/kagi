@@ -5,6 +5,7 @@ namespace App\Modules\kagi\Http\Controllers\Social;
 use App\Http\Controllers\Controller;
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
+use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
 use App\Modules\Kagi\Http\Models\User;
 use App\Modules\Kagi\Http\Repositories\UserRepository;
 
@@ -25,10 +26,12 @@ class SocialAuthController extends Controller
 
 
 	public function __construct(
+			RegistrarRepository $registrar_repo,
 			User $user,
 			UserRepository $user_repo
 		)
 	{
+		$this->registrar_repo = $registrar_repo;
 		$this->user = $user;
 		$this->user_repo = $user_repo;
 // middleware
@@ -83,18 +86,16 @@ class SocialAuthController extends Controller
 			$new_user = $this->user->find($new_user->id);
 			$new_user->syncRoles([Config::get('kagi.default_role')]);
 
-//			\Event::fire(new \ProfileWasCreated($new_user));
-
 		}
 
 		$login_user = $this->user_repo->getUserInfo($user->email);
 		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
 			Auth::loginUsingId($login_user->id);
-			$this->user_repo->touchLastLogin($login_user->email);
+			$this->registrar_repo->touchLastLogin($login_user->email);
 //dd(Auth::user());
 
 			Flash::success(trans('kotoba::auth.success.login'));
-			return redirect()->intended(Config::get('kagi.new_user_return_path', '/'));
+			return redirect()->intended(Config::get('kagi.login_return_path', '/'));
 		}
 
 		return redirect('social/login');

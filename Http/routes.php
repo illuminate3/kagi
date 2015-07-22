@@ -32,36 +32,55 @@ Route::group(['prefix' => 'kagi'], function() {
 });
 
 
-// Authentication
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
+/*
+|--------------------------------------------------------------------------
+| /auth/
+|--------------------------------------------------------------------------
+*/
 Route::group(['prefix' => 'auth'], function() {
+
+// Authentication
+	Route::get('login', 'Auth\AuthController@getLogin');
+	Route::post('login', 'Auth\AuthController@postLogin');
+	Route::get('logout', 'Auth\AuthController@getLogout');
+
+// Confirmation
 	Route::get('confirm/{code}', 'Auth\AuthController@getConfirm');
 	Route::post('confirm/{code}', 'Auth\AuthController@postConfirm');
+
+// Registration
+	Route::get('register', 'Auth\AuthController@getRegister');
+	Route::post('register', 'Auth\AuthController@postRegister');
+
 });
 
+
+/*
+|--------------------------------------------------------------------------
+| /password/
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'password'], function() {
+
 // Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
+	Route::get('email', 'Auth\PasswordController@getEmail');
+	Route::post('email', 'Auth\PasswordController@postEmail');
 
 // Password reset routes...
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+	Route::get('reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('reset', 'Auth\PasswordController@postReset');
 
 
 // Password reset link request
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
+	Route::get('email', 'Auth\PasswordController@getEmail');
+	Route::post('email', 'Auth\PasswordController@postEmail');
 
 // Password reset
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
+	Route::get('reset/{token}', 'Auth\PasswordController@getReset');
+	Route::post('reset', 'Auth\PasswordController@postReset');
+
+});
+
 
 // Social
 Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Flash;
 use Theme;
 
 
@@ -40,13 +41,15 @@ trait ResetsPasswords
 		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
 			$message->subject($this->getEmailSubject());
 		});
-dd($response);
+//dd($response);
 
 		switch ($response) {
 			case Password::RESET_LINK_SENT:
+				Flash::success( trans('kotoba::auth.success.password_reset') );
 				return redirect()->back()->with('status', trans($response));
 
 			case Password::INVALID_USER:
+				Flash::error( trans('kotoba::auth.error.reset_password') );
 				return redirect()->back()->withErrors(['email' => trans($response)]);
 		}
 	}
