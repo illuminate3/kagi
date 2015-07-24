@@ -23,7 +23,7 @@ trait AuthenticatesUsers
 	 */
 	public function getLogin()
 	{
-		return Theme::View('kagi::auth.login');
+		return Theme::View('modules.kagi.auth.login');
 	}
 
 

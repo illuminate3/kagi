@@ -54,7 +54,7 @@ class PermissionsController extends KagiController {
 	 */
 	public function index()
 	{
-		return Theme::View('kagi::permissions.index');
+		return Theme::View('modules.kagi.permissions.index');
 	}
 
 
@@ -65,7 +65,7 @@ class PermissionsController extends KagiController {
 	 */
 	public function create()
 	{
-		return Theme::View('kagi::permissions.create');
+		return Theme::View('modules.kagi.permissions.create');
 	}
 
 
@@ -116,7 +116,7 @@ class PermissionsController extends KagiController {
 		$model = '$permission';
 //dd($modal_body);
 
-		return Theme::View('kagi::permissions.edit',
+		return Theme::View('modules.kagi.permissions.edit',
 			compact(
 				'permission',
 				'modal_title',

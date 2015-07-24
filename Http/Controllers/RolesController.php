@@ -52,7 +52,7 @@ class RolesController extends KagiController {
 	 */
 	public function index()
 	{
-		return Theme::View('kagi::roles.index');
+		return Theme::View('modules.kagi.roles.index');
 	}
 
 
@@ -63,7 +63,7 @@ class RolesController extends KagiController {
 	 */
 	public function create()
 	{
-		return Theme::View('kagi::roles.create',  $this->role->create());
+		return Theme::View('modules.kagi.roles.create',  $this->role->create());
 	}
 
 
@@ -104,7 +104,7 @@ class RolesController extends KagiController {
 	 */
 	public function edit($id)
 	{
-		return Theme::View('kagi::roles.edit',  $this->role->edit($id));
+		return Theme::View('modules.kagi.roles.edit',  $this->role->edit($id));
 	}
 
 

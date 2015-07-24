@@ -22,7 +22,7 @@ trait ResetsPasswords
 	 */
 	public function getEmail()
 	{
-		return Theme::View('kagi::auth.password');
+		return Theme::View('modules.kagi.auth.password');
 	}
 
 
@@ -78,7 +78,7 @@ trait ResetsPasswords
 			throw new NotFoundHttpException;
 		}
 
-		return Theme::View('kagi::auth.reset')->with('token', $token);
+		return Theme::View('modules.kagi.auth.reset')->with('token', $token);
 	}
 
 

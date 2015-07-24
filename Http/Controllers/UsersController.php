@@ -63,7 +63,7 @@ class UsersController extends KagiController {
 	 */
 	public function index()
 	{
-		return Theme::View('kagi::users.index');
+		return Theme::View('modules.kagi.users.index');
 	}
 
 
@@ -74,7 +74,7 @@ class UsersController extends KagiController {
 	 */
 	public function create()
 	{
-		return Theme::View('kagi::users.create');
+		return Theme::View('modules.kagi.users.create');
 	}
 
 
@@ -106,7 +106,7 @@ class UsersController extends KagiController {
 	public function show($id)
 	{
 //dd($this->user->show($id));
-		return Theme::View('kagi::users.show', $this->user->show($id));
+		return Theme::View('modules.kagi.users.show', $this->user->show($id));
 	}
 
 
@@ -129,7 +129,7 @@ class UsersController extends KagiController {
 		$modal_id = $id;
 		$model = '$user';
 
-		return Theme::View('kagi::users.edit',
+		return Theme::View('modules.kagi.users.edit',
 			compact(
 				'allRoles',
 				'user',

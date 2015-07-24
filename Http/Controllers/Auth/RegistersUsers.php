@@ -23,7 +23,7 @@ trait RegistersUsers
 	 */
 	public function getRegister()
 	{
-		return Theme::View('kagi::auth.register');
+		return Theme::View('modules.kagi.auth.register');
 	}
 
 
@@ -50,7 +50,7 @@ trait RegistersUsers
 		$this->user_repo->store($request->all());
 
 		Flash::success(trans('kotoba::email.success.sent'));
-		return Theme::View('kagi::auth.login');
+		return Theme::View('modules.kagi.auth.login');
 	}
 
 
@@ -75,10 +75,10 @@ trait RegistersUsers
 
 		if ( $confirmedCode != null ) {
 			Flash::success( trans('kotoba::auth.success.confirmation') );
-			return Theme::View('kagi::auth.confirm')->with(compact('code'));
+			return Theme::View('modules.kagi.auth.confirm')->with(compact('code'));
 		} else {
 			Flash::error( trans('kotoba::auth.error.confirmation') );
-			return Theme::View('kagi::auth.login');
+			return Theme::View('modules.kagi.auth.login');
 		}
 	}
 
@@ -103,7 +103,7 @@ trait RegistersUsers
 			$this->registrar_repo->activateUser($user);
 
 			Flash::success( trans('kotoba::auth.success.confirmed') );
-			return Theme::View('kagi::auth.login');
+			return Theme::View('modules.kagi.auth.login');
 		} else {
 
 			Flash::error( trans('kotoba::auth.error.email') );
