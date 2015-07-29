@@ -3,9 +3,9 @@
 namespace App\Modules\kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Routing\Controller as BaseController;
+// use Illuminate\Foundation\Bus\DispatchesJobs;
+// use Illuminate\Foundation\Validation\ValidatesRequests;
+// use Illuminate\Routing\Controller as BaseController;
 
 use Theme;
 
@@ -14,7 +14,7 @@ class KagiController extends Controller
 {
 
 
-	use DispatchesJobs, ValidatesRequests;
+// 	use DispatchesJobs, ValidatesRequests;
 
 	/**
 	 * Initializer.
