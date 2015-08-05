@@ -17,14 +17,12 @@ use Theme;
 
 class RolesController extends KagiController {
 
-
 	/**
 	 * The UserRepository instance.
 	 *
 	 * @var App\Repositories\UserRepository
 	 */
 	protected $role;
-
 
 	/**
 	 * Create a new UserController instance.
@@ -145,6 +143,7 @@ dd("destroy");
 		return redirect('role')->with('ok', trans('back/roles.destroyed'));
 	}
 
+
 	/**
 	* Datatables data
 	*
@@ -173,6 +172,5 @@ dd("destroy");
 
 			->make(true);
 	}
-
 
 }

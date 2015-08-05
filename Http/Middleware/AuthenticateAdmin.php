@@ -14,7 +14,6 @@ use Flash;
 class AuthenticateAdmin implements Middleware
 {
 
-
 	/**
 	 * Handle an incoming request.
 	 *
@@ -34,6 +33,5 @@ class AuthenticateAdmin implements Middleware
 
 		return $next($request);
 	}
-
 
 }

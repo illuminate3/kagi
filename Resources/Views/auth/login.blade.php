@@ -4,7 +4,6 @@
 <div class="row">
 <div class="col-md-4 col-md-offset-4">
 
-
 <div role="tabpanel">
 
 	<!-- Nav tabs -->
@@ -69,7 +68,6 @@
 	</div>
 
 </div>
-
 
 </div><!-- ./col -->
 </div><!-- ./row -->

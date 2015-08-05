@@ -27,7 +27,6 @@
 	});
 @stop
 
-
 {{-- Content --}}
 @section('content')
 
@@ -45,7 +44,6 @@
 </h1>
 </div>
 
-
 <div class="row">
 {!! Form::model(
 	$role,
@@ -56,14 +54,12 @@
 	]
 ) !!}
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
 		<input type="text" id="name" name="name" value="{{ $role->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
 </div>
 </div>
-
 
 <div class="form-group">
 <div class="input-group">
@@ -72,14 +68,12 @@
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
 		<input type="text" id="description" name="description" value="{{ $role->description }}" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>
-
 
 <hr>
 <h3>
@@ -95,7 +89,6 @@
 	@endif
 @endforeach
 </select>
-
 
 <hr>
 
@@ -127,16 +120,13 @@
 </div>
 </div>
 
-
 {!! Form::close() !!}
 
 </div> <!-- ./ row -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	@include($activeTheme . '::' . '_partials.modal')
 </div>
-
 
 @stop

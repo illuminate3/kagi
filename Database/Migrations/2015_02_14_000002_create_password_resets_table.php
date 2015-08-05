@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreatePasswordResetsTable extends Migration {
 
 	public function __construct()
@@ -10,6 +11,7 @@ class CreatePasswordResetsTable extends Migration {
 		// Get the prefix
 		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
 	}
+
 
 	/**
 	 * Run the migrations.
@@ -29,17 +31,16 @@ class CreatePasswordResetsTable extends Migration {
 
 			$table->engine = 'InnoDB';
 
-
 			$table->string('email')->unique()->index();
 			$table->string('token')->index();
 //			$table->timestamp('created_at');
-
 
 			$table->softDeletes();
 			$table->timestamps();
 
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

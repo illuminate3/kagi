@@ -17,7 +17,6 @@ use Validator;
 class AuthController extends Controller
 {
 
-
 	/*
 	|--------------------------------------------------------------------------
 	| Registration & Login Controller
@@ -81,6 +80,5 @@ class AuthController extends Controller
 		]);
 	}
 */
-
 
 }

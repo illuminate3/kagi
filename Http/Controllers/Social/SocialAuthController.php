@@ -19,11 +19,9 @@ use Validator;
 class SocialAuthController extends Controller
 {
 
-
 	use ShinobiTrait;
 
 	private $auth;
-
 
 	public function __construct(
 			RegistrarRepository $registrar_repo,
@@ -101,6 +99,5 @@ class SocialAuthController extends Controller
 		return redirect('social/login');
 
 	}
-
 
 }

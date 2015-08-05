@@ -7,7 +7,6 @@ use Config;
 
 class RegisterRequest extends FormRequest {
 
-
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -31,6 +30,5 @@ class RegisterRequest extends FormRequest {
 			'password'			=> 'required|confirmed|' . Config::get('kagi.password_min', 'min:6') . '',
 		];
 	}
-
 
 }

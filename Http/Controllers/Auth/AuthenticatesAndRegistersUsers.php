@@ -2,7 +2,6 @@
 
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
-
 trait AuthenticatesAndRegistersUsers
 {
 

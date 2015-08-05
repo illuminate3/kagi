@@ -15,13 +15,11 @@
  * @license MIT - http://datatables.net/license_mit
  */
 
-
 // REMOVE THIS BLOCK - used for DataTables test environment only!
 $file = $_SERVER['DOCUMENT_ROOT'].'/datatables/mysql.php';
 if ( is_file( $file ) ) {
 	include( $file );
 }
-
 
 class SSP {
 	/**
@@ -260,7 +258,6 @@ class SSP {
 		);
 		$recordsTotal = $resTotalLength[0][0];
 
-
 		/*
 		 * Output
 		 */
@@ -433,7 +430,6 @@ class SSP {
 		return $stmt->fetchAll();
 	}
 
-
 	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	 * Internal methods
 	 */
@@ -454,6 +450,7 @@ class SSP {
 
 		exit(0);
 	}
+
 
 	/**
 	 * Create a PDO binding key which can be used for escaping variables safely

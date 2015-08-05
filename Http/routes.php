@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Kagi
@@ -18,19 +17,15 @@ Route::model('post', 'Post');
 Route::model('role', 'Role');
 */
 
-
 // Resources
 
-
 // Controllers
-
 
 Route::group(['prefix' => 'kagi'], function() {
 	Route::get('welcome', [
 		'uses'=>'KagiController@welcome'
 	]);
 });
-
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +49,6 @@ Route::group(['prefix' => 'auth'], function() {
 
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | /password/
@@ -70,7 +64,6 @@ Route::group(['prefix' => 'password'], function() {
 	Route::get('reset/{token}', 'Auth\PasswordController@getReset');
 	Route::post('reset', 'Auth\PasswordController@postReset');
 
-
 // Password reset link request
 	Route::get('email', 'Auth\PasswordController@getEmail');
 	Route::post('email', 'Auth\PasswordController@postEmail');
@@ -80,7 +73,6 @@ Route::group(['prefix' => 'password'], function() {
 	Route::post('reset', 'Auth\PasswordController@postReset');
 
 });
-
 
 // Social
 Route::get('social/login', 'Social\SocialAuthController@redirectToProvider');
@@ -99,7 +91,6 @@ Route::controllers([
 */
 
 // API DATA
-
 
 /*
 |--------------------------------------------------------------------------

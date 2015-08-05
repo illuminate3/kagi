@@ -9,25 +9,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class PermissionRole extends Model {
 
-
 //	use PresentableTrait;
-
 
 	protected $table = 'permission_role';
 
-
 // Presenter ---------------------------------------------------------------
 //	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
-
 
 // Translation Model -------------------------------------------------------
 // Hidden ------------------------------------------------------------------
 // Fillable ----------------------------------------------------------------
 	protected $fillable = [];
 
-
 // Translated Columns ------------------------------------------------------
 // Relationships -----------------------------------------------------------
+
+// hasMany
+// BelongsTo
+// BelongsToMany
+
 // Functions ---------------------------------------------------------------
 
 

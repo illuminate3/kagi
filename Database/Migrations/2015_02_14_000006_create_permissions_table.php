@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreatePermissionsTable extends Migration
 {
 	/**
@@ -20,6 +21,7 @@ class CreatePermissionsTable extends Migration
 			$table->timestamps();
 		});
 	}
+
 
 	/**
 	 * Reverse the migration.

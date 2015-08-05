@@ -13,7 +13,6 @@ use Theme;
 class KagiController extends Controller
 {
 
-
 // 	use DispatchesJobs, ValidatesRequests;
 
 	/**
@@ -38,6 +37,5 @@ class KagiController extends Controller
 	{
 		return Theme::View('modules.kagi.welcome.kagi');
 	}
-
 
 }

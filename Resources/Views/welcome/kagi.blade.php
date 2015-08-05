@@ -14,7 +14,6 @@
 @section('inline-scripts')
 @stop
 
-
 {{-- Content --}}
 @section('content')
 

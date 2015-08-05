@@ -25,7 +25,6 @@ jQuery(document).ready(function($) {
 });
 @stop
 
-
 {{-- Content --}}
 @section('content')
 
@@ -43,7 +42,6 @@ jQuery(document).ready(function($) {
 </h1>
 </div>
 
-
 <div class="row">
 {!! Form::model(
 	$user,
@@ -54,14 +52,12 @@ jQuery(document).ready(function($) {
 	]
 ) !!}
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 		<input type="text" id="name" name="name" value="{{ $user->name }}" placeholder="{{ trans('kotoba::account.name') }}" class="form-control" autofocus="autofocus">
 </div>
 </div>
-
 
 <div class="form-group">
 <div class="input-group">
@@ -70,7 +66,6 @@ jQuery(document).ready(function($) {
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
@@ -78,14 +73,12 @@ jQuery(document).ready(function($) {
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-key fa-fw fa-rotate-180"></i></span>
 		<input type="password" id="password_confirmation" name="password_confirmation" value="" placeholder="{{ trans('kotoba::auth.password_confirmation') }}" class="form-control">
 </div>
 </div>
-
 
 <div class="form-group">
 
@@ -111,7 +104,6 @@ jQuery(document).ready(function($) {
 
 </div>
 
-
 <hr>
 
 @if ($allRoles != null)
@@ -134,9 +126,7 @@ jQuery(document).ready(function($) {
 	</div>
 @endif
 
-
 <hr>
-
 
 <div class="row">
 <div class="col-sm-12">
@@ -167,16 +157,13 @@ jQuery(document).ready(function($) {
 </div>
 </div>
 
-
 {!! Form::close() !!}
 
 </div> <!-- ./ row -->
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	@include($activeTheme . '::' . '_partials.modal')
 </div>
-
 
 @stop

@@ -14,7 +14,6 @@
 @section('inline-scripts')
 @stop
 
-
 {{-- Content --}}
 @section('content')
 
@@ -32,14 +31,12 @@
 </h1>
 </div>
 
-
 <div class="row">
 {!! Form::open([
 	'url' => 'admin/users',
 	'method' => 'POST',
 	'class' => 'form'
 ]) !!}
-
 
 <div class="form-group">
 <div class="input-group">
@@ -48,14 +45,12 @@
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
 		<input type="text" id="email" name="email" placeholder="{{ trans('kotoba::account.email') }}" class="form-control">
 </div>
 </div>
-
 
 <div class="form-group">
 <div class="input-group">
@@ -64,14 +59,12 @@
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-key fa-fw fa-rotate-180"></i></span>
 		<input type="password" id="password_confirmation" name="password_confirmation" placeholder="{{ trans('kotoba::auth.password_confirmation') }}" class="form-control">
 </div>
 </div>
-
 
 <div class="form-group">
 
@@ -96,7 +89,6 @@
 	</label>
 
 </div>
-
 
 <hr>
 
@@ -127,7 +119,6 @@
 </a>
 </div>
 </div>
-
 
 {!! Form::close() !!}
 

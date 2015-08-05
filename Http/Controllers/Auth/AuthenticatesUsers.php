@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Cache;
 use Flash;
 use Theme;
 
-
 trait AuthenticatesUsers
 {
-
 
 	use RedirectsUsers;
 
@@ -171,6 +169,5 @@ trait AuthenticatesUsers
 			ThrottlesLogins::class, class_uses_recursive(get_class($this))
 		);
 	}
-
 
 }

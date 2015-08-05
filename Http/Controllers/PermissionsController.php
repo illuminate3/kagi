@@ -19,14 +19,12 @@ use Theme;
 
 class PermissionsController extends KagiController {
 
-
 	/**
 	 * The UserRepository instance.
 	 *
 	 * @var App\Modules\Kagi\Http\Repositories\PermissionRepository
 	 */
 	protected $permissions;
-
 
 	/**
 	 * Create a new PermissionsController instance.
@@ -194,6 +192,5 @@ class PermissionsController extends KagiController {
 
 			->make(true);
 	}
-
 
 }

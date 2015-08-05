@@ -8,7 +8,6 @@ use Auth;
 
 class DeleteRequest extends FormRequest {
 
-
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -33,6 +32,5 @@ class DeleteRequest extends FormRequest {
 //			'id' => 'required|integer',
 		];
 	}
-
 
 }

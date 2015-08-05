@@ -4,14 +4,12 @@ namespace App\Modules\Kagi\Http\Repositories;
 
 abstract class BaseRepository {
 
-
 	/**
 	 * The Model instance.
 	 *
 	 * @var Illuminate\Database\Eloquent\Model
 	 */
 	protected $model;
-
 
 	/**
 	 * Get all models.
@@ -46,6 +44,5 @@ abstract class BaseRepository {
 	{
 		return $this->model->find($id);
 	}
-
 
 }

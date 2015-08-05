@@ -41,7 +41,6 @@ return [
 	'blocked'					=> '0',
 ),
 
-
 /* SocialLite choices
 |
 | facebook, twitter, google, and github

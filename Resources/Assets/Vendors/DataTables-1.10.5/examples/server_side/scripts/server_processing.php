@@ -57,7 +57,6 @@ $sql_details = array(
 	'host' => ''
 );
 
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * If you just want to use the basic configuration for DataTables with PHP
  * server-side, there is no need to edit below this line.
@@ -68,5 +67,4 @@ require( 'ssp.class.php' );
 echo json_encode(
 	SSP::simple( $_GET, $sql_details, $table, $primaryKey, $columns )
 );
-
 

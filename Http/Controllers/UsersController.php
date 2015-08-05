@@ -18,7 +18,6 @@ use Theme;
 
 class UsersController extends KagiController {
 
-
 	/**
 	 * The UserRepository instance.
 	 *
@@ -32,7 +31,6 @@ class UsersController extends KagiController {
 	 * @var App\Repositories\RoleRepository
 	 */
 	protected $role;
-
 
 	/**
 	 * Create a new UserController instance.
@@ -231,6 +229,5 @@ class UsersController extends KagiController {
 
 			->make(true);
 	}
-
 
 }

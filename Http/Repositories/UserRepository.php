@@ -17,7 +17,6 @@ use Hash;
 
 class UserRepository extends BaseRepository {
 
-
 	/**
 	 * The User instance.
 	 *
@@ -219,7 +218,6 @@ class UserRepository extends BaseRepository {
 		$user->syncRoles($input['roles']);
 	}
 
-
 // Functions --------------------------------------------------
 
 	public function getRoles()
@@ -244,7 +242,6 @@ class UserRepository extends BaseRepository {
 		return $user;
 	}
 
-
 	public function getUserInfo($email)
 	{
 		$user = DB::table('users')
@@ -254,7 +251,6 @@ class UserRepository extends BaseRepository {
 
 		return $user;
 	}
-
 
 	public function createSocialUser($user)
 	{
@@ -287,6 +283,5 @@ class UserRepository extends BaseRepository {
 			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
 		]);
 	}
-
 
 }

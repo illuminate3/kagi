@@ -7,7 +7,6 @@ use Laracasts\Presenter\Presenter;
 
 class Kagi extends Presenter {
 
-
 	/**
 	 * name
 	 *
@@ -210,6 +209,5 @@ class Kagi extends Presenter {
 
 		return trim($return, ', ');
 	}
-
 
 }

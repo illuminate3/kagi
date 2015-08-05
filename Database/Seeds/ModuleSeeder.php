@@ -9,10 +9,8 @@ use Schema;
 
 class ModuleSeeder extends Seeder {
 
-
 	public function run()
 	{
-
 
 // Permissions -------------------------------------------------------------
 		$permissions = array(
@@ -27,7 +25,6 @@ class ModuleSeeder extends Seeder {
 		{
 			DB::table('permissions')->insert( $permissions );
 		}
-
 
 // Links -------------------------------------------------------------------
 // Users
@@ -120,8 +117,6 @@ class ModuleSeeder extends Seeder {
 			DB::table('menulink_translations')->insert( $ink_name_trans );
 		}
 
-
 	} // run
-
 
 }

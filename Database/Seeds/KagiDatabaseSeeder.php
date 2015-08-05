@@ -23,5 +23,4 @@ class KagiDatabaseSeeder extends Seeder
 
 	}
 
-
 }

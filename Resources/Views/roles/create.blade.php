@@ -25,7 +25,6 @@
 	});
 @stop
 
-
 {{-- Content --}}
 @section('content')
 
@@ -43,14 +42,12 @@
 </h1>
 </div>
 
-
 <div class="row">
 {!! Form::open([
 	'url' => 'admin/roles',
 	'method' => 'POST',
 	'class' => 'form'
 ]) !!}
-
 
 <div class="form-group">
 <div class="input-group">
@@ -59,7 +56,6 @@
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-bookmark fa-fw"></i></span>
@@ -67,14 +63,12 @@
 </div>
 </div>
 
-
 <div class="form-group">
 <div class="input-group">
 	<span class="input-group-addon"><i class="fa fa-briefcase fa-fw"></i></span>
 		<input type="text" id="description" name="description" placeholder="{{ trans('kotoba::general.description') }}" class="form-control">
 </div>
 </div>
-
 
 <hr>
 
@@ -95,7 +89,6 @@
 @endif
 
 <hr>
-
 
 <div class="row">
 <div class="col-sm-12">
@@ -125,10 +118,8 @@
 </div>
 </div>
 
-
 {!! Form::close() !!}
 
 </div> <!-- ./ row -->
-
 
 @stop

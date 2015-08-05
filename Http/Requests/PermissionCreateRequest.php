@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PermissionCreateRequest extends FormRequest {
 
-
 	/**
 	 * Determine if the user is authorized to make this request.
 	 *
@@ -33,6 +32,5 @@ class PermissionCreateRequest extends FormRequest {
 			'description'		=> 'required',
 		];
 	}
-
 
 }

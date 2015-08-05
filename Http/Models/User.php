@@ -14,24 +14,19 @@ use Laracasts\Presenter\PresentableTrait;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-
 	use Authenticatable;
 	use CanResetPassword;
 	use PresentableTrait;
 	use ShinobiTrait;
 
-
 	protected $table = 'users';
-
 
 // Presenter ---------------------------------------------------------------
 	protected $presenter = 'App\Modules\Kagi\Http\Presenters\Kagi';
 
-
 // Translation Model -------------------------------------------------------
 // Hidden ------------------------------------------------------------------
 	protected $hidden = ['password', 'remember_token'];
-
 
 // Fillable ----------------------------------------------------------------
 	protected $fillable = [
@@ -48,9 +43,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		'confirmation_code'
 		];
 
-
 // Translated Columns ------------------------------------------------------
 // Relationships -----------------------------------------------------------
+
+// hasMany
+// BelongsTo
+// BelongsToMany
+
 // Functions ---------------------------------------------------------------
 
 

@@ -7,7 +7,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserCreateRequest extends FormRequest {
 
-
 	/**
 	* Determine if the user is authorized to make this request.
 	*
@@ -35,6 +34,5 @@ class UserCreateRequest extends FormRequest {
 			'password_confirmation'		=> 'required_with:password'
 		];
 	}
-
 
 }

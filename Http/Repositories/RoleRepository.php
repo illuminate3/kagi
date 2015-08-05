@@ -11,14 +11,12 @@ use DB;
 
 class RoleRepository extends BaseRepository {
 
-
 	/**
 	 * The Role instance.
 	 *
 	 * @var App\Models\Role
 	 */
 	protected $role;
-
 
 	/**
 	 * Create a new RoleRepository instance.
@@ -116,6 +114,5 @@ class RoleRepository extends BaseRepository {
 
 		$role->syncPermissions($input['my-select']);
 	}
-
 
 }

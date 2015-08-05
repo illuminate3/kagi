@@ -3,6 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class CreateUsersTable extends Migration {
 
 	public function __construct()
@@ -10,6 +11,7 @@ class CreateUsersTable extends Migration {
 		// Get the prefix
 		$this->prefix = Config::get('kagi.kagi_db.prefix', '');
 	}
+
 
 	/**
 	 * Run the migrations.
@@ -35,7 +37,6 @@ class CreateUsersTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id');
 
-
 			$table->string('name');
 			$table->string('email')->unique()->index();
 			$table->string('password')->nullable()->index();
@@ -59,12 +60,12 @@ class CreateUsersTable extends Migration {
 			$table->timestamp('last_login')->nullable();
 			$table->string('avatar',100)->nullable();
 
-
 			$table->softDeletes();
 			$table->timestamps();
 
 		});
 	}
+
 
 	/**
 	 * Reverse the migrations.

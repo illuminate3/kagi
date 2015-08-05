@@ -9,12 +9,10 @@ use Config;
 use Flash;
 use Theme;
 
-
 trait RegistersUsers
 {
 
 	use RedirectsUsers;
-
 
 	/**
 	 * Show the application registration form.
@@ -52,7 +50,6 @@ trait RegistersUsers
 		Flash::success(trans('kotoba::email.success.sent'));
 		return Theme::View('modules.kagi.auth.login');
 	}
-
 
 /*
 |--------------------------------------------------------------------------
@@ -112,6 +109,5 @@ trait RegistersUsers
 		}
 
 	}
-
 
 }

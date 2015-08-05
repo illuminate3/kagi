@@ -54,5 +54,4 @@ return [
 		'redirect' => 'http://localhost/social/login'
 	]
 
-
 ];

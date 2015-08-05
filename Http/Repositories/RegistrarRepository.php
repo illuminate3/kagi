@@ -16,7 +16,6 @@ use Mail;
 
 class RegistrarRepository extends BaseRepository {
 
-
 	/**
 	 * The User instance.
 	 *
@@ -24,13 +23,11 @@ class RegistrarRepository extends BaseRepository {
 	 */
 	protected $user;
 
-
 /*
 |---------------------------------------------------------------------------
 | Register
 |---------------------------------------------------------------------------
 */
-
 
 	/**
 	 * Send confirmation email to user
@@ -49,13 +46,11 @@ class RegistrarRepository extends BaseRepository {
 		});
 	}
 
-
 /*
 |---------------------------------------------------------------------------
 | Login
 |---------------------------------------------------------------------------
 */
-
 
 	/**
 	 * Update user login timestamp
@@ -106,13 +101,11 @@ class RegistrarRepository extends BaseRepository {
 		return $approved;
 	}
 
-
 /*
 |---------------------------------------------------------------------------
 | Confirm
 |---------------------------------------------------------------------------
 */
-
 
 	/**
 	 * check against db for code
@@ -131,6 +124,7 @@ class RegistrarRepository extends BaseRepository {
 		return $confirmation;
 	}
 
+
 	/**
 	 * check against db for code
 	 *
@@ -148,6 +142,7 @@ class RegistrarRepository extends BaseRepository {
 		return $user;
 	}
 
+
 	/**
 	 * Change the user confirm status
 	 *
@@ -163,6 +158,7 @@ class RegistrarRepository extends BaseRepository {
 		$user->confirmed = 1;
 		return $user->update();
 	}
+
 
 	/**
 	 * Change the user confirm status
@@ -186,13 +182,11 @@ class RegistrarRepository extends BaseRepository {
 
 
 
-
 /*
 |---------------------------------------------------------------------------
 | Create
 |---------------------------------------------------------------------------
 */
-
 
 	/**
 	 * Create a new user instance after a valid registration.
@@ -360,6 +354,5 @@ dd('findByUsernameOrCreateGoogle');
 		}
 	}
 */
-
 
 }

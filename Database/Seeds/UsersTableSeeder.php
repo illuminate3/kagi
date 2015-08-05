@@ -13,7 +13,6 @@ use DB;
 
 class UsersTableSeeder extends Seeder {
 
-
 	public function __construct(
 			User $user,
 			Role $role
@@ -22,7 +21,6 @@ class UsersTableSeeder extends Seeder {
 		$this->user = $user;
 		$this->role = $role;
 	}
-
 
 	public function run()
 	{
@@ -121,6 +119,5 @@ class UsersTableSeeder extends Seeder {
 		$user->roles()->attach(2);
 
 	} // run
-
 
 }

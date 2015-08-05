@@ -16,7 +16,6 @@
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
-
 {{-- Content --}}
 @section('content')
 
@@ -240,7 +239,6 @@
 			</a>
 		</div>
 	</div>
-
 
 </div> <!-- ./ row -->
 @stop

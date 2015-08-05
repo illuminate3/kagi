@@ -15,7 +15,6 @@ use View;
 class KagiServiceProvider extends ServiceProvider
 {
 
-
 	/**
 	 * Register the Kagi module service provider.
 	 *
@@ -30,6 +29,7 @@ class KagiServiceProvider extends ServiceProvider
 		$this->registerNamespaces();
 		$this->registerProviders();
 	}
+
 
 	/**
 	 * Register the Menus module resource namespaces.
@@ -61,7 +61,6 @@ class KagiServiceProvider extends ServiceProvider
 			__DIR__ . '/../Resources/Views/' => public_path('themes/' . Theme::getActive() . '/views/modules/kagi/'),
 		]);
 
-
 		$this->publishes([
 			__DIR__ . '/../Config/kagi.php' => config_path('kagi.php'),
 			__DIR__ . '/../Config/kagi_services.php' => config_path('kagi_services.php'),
@@ -81,12 +80,10 @@ class KagiServiceProvider extends ServiceProvider
 			__DIR__ . '/../Resources/Views/' => public_path('themes/' . Theme::getActive() . '/views/modules/kagi/'),
 		], 'views');
 
-
 		AliasLoader::getInstance()->alias(
 			'Socialite',
 			'Laravel\Socialite\Facades\Socialite'
 		);
-
 
 	}
 
@@ -104,6 +101,5 @@ class KagiServiceProvider extends ServiceProvider
 		$app->register('Caffeinated\Shinobi\ShinobiServiceProvider');
 		$app->register('Laravel\Socialite\SocialiteServiceProvider');
 	}
-
 
 }

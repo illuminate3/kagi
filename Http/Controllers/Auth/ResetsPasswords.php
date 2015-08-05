@@ -11,7 +11,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Flash;
 use Theme;
 
-
 trait ResetsPasswords
 {
 
@@ -132,6 +131,7 @@ trait ResetsPasswords
 		Auth::login($user);
 	}
 
+
 	/**
 	 * Get the post register / login redirect path.
 	 *
@@ -145,6 +145,5 @@ trait ResetsPasswords
 
 		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
 	}
-
 
 }

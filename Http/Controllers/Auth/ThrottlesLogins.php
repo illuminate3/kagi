@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Cache;
 
-
 trait ThrottlesLogins
 {
 
@@ -121,6 +120,5 @@ trait ThrottlesLogins
 
 		return 'login:expiration:'.md5($username.$request->ip());
 	}
-
 
 }

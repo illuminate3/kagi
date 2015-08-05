@@ -8,14 +8,12 @@ use Illuminate\Http\Request;
 
 class PermissionRepository extends BaseRepository {
 
-
 	/**
 	 * The Role instance.
 	 *
 	 * @var App\Modules\Kagi\Http\Models\Permission
 	 */
 	protected $permission;
-
 
 	/**
 	 * Create a new PermissionRepository instance.
@@ -81,6 +79,5 @@ class PermissionRepository extends BaseRepository {
 		$permission = $this->getById($id);
 		$permission->update($input);
 	}
-
 
 }
