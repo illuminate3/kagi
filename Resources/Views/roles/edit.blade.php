@@ -1,5 +1,6 @@
 @extends($theme_back)
 
+
 {{-- Web site Title --}}
 @section('title')
 {{ Lang::choice('kotoba::role.role', 2) }} :: @parent
