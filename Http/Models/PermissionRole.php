@@ -25,8 +25,8 @@ class PermissionRole extends Model {
 // Relationships -----------------------------------------------------------
 
 // hasMany
-// BelongsTo
-// BelongsToMany
+// belongsTo
+// belongsToMany
 
 // Functions ---------------------------------------------------------------
 

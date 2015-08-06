@@ -29,8 +29,8 @@ class Role extends Model {
 // Relationships -----------------------------------------------------------
 
 // hasMany
-// BelongsTo
-// BelongsToMany
+// belongsTo
+// belongsToMany
 
 // Functions ---------------------------------------------------------------
 

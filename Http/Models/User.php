@@ -47,8 +47,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 // Relationships -----------------------------------------------------------
 
 // hasMany
-// BelongsTo
-// BelongsToMany
+// belongsTo
+// belongsToMany
 
 // Functions ---------------------------------------------------------------
 

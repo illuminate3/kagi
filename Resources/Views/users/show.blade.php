@@ -17,8 +17,10 @@
 	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 @stop
 
+
 {{-- Content --}}
 @section('content')
+
 
 <div class="row">
 <h1>

@@ -21,8 +21,8 @@ class AssignedRoles extends Model {
 // Relationships -----------------------------------------------------------
 
 // hasMany
-// BelongsTo
-// BelongsToMany
+// belongsTo
+// belongsToMany
 
 // Functions ---------------------------------------------------------------
 

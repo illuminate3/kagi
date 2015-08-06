@@ -26,8 +26,10 @@ jQuery(document).ready(function($) {
 });
 @stop
 
+
 {{-- Content --}}
 @section('content')
+
 
 <div class="row">
 <h1>

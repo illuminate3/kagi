@@ -28,8 +28,10 @@
 	});
 @stop
 
+
 {{-- Content --}}
 @section('content')
+
 
 <div class="row">
 <h1>
