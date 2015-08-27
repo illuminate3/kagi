@@ -16,8 +16,9 @@ return [
 | Route
 |--------------------------------------------------------------------------
 */
-'auth_fail_redirect'			=> '/home',
-'new_user_return_path'			=> '/',
+'auth_fail_redirect'			=> '/auth/login',
+'login_return_path'				=> '/',
+'logout_return_path'			=> '/auth/login',
 
 /*
 |--------------------------------------------------------------------------
@@ -41,12 +42,13 @@ return [
 	'blocked'					=> '0',
 ),
 
+
 /* SocialLite choices
 |
 | facebook, twitter, google, and github
 |
 */
-'kagi_social'					=> 'github',
+'kagi_social'					=> 'google',
 'kagi_avatar'					=> 'assets/images/usr.png',
 
 ];
