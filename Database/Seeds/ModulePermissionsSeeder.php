@@ -7,7 +7,7 @@ Use DB;
 use Schema;
 
 
-class ModuleSeeder extends Seeder {
+class ModulePermissionsSeeder extends Seeder {
 
 	public function run()
 	{
