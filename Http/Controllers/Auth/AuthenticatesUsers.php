@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
+use Config;
 use Flash;
 use Theme;
 
@@ -132,7 +133,7 @@ trait AuthenticatesUsers
 		Auth::logout();
 
 		Flash::error(trans('kotoba::auth.success.logout'));
-		return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
+		return redirect( property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : Config::get('logout_return_path', '/auth/login') );
 	}
 
 
