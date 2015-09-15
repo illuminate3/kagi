@@ -62,7 +62,7 @@
 		<li>
 			<a href="#status" data-toggle="tab">
 				<i class="fa fa-heart fa-fw"></i>
-				{{ trans('kotoba::general.status') }}
+				{{ Lang::choice('kotoba::general.status', 1) }}
 			</a>
 		</li>
 	</ul>
@@ -171,7 +171,7 @@
 		<fieldset>
 			<h2>
 				<i class="fa fa-heart fa-fw"></i>
-				{{ trans('kotoba::general.status') }}
+				{{ Lang::choice('kotoba::general.status', 1) }}
 				<hr>
 			</h2>
 
