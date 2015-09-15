@@ -46,13 +46,9 @@ class UsersSeeder extends Seeder {
 			DB::table('users')->insert($c);
 
 
-// Attach permission to role
-		$role = $this->role->find(2);
-		$role->syncPermissions($c);
-
 // Attach role to user
 		$user = User::find($line[0]);
-		$user->roles()->attach($c);
+		$user->roles()->attach(2);
 
 
 		}

@@ -9,13 +9,10 @@ use Schema;
 
 class ModulePermissionsSeeder extends Seeder {
 
+
 	public function run()
 	{
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a9220356c99b2ed72bbd9cafef4cdfe934ff9230
 // Permissions -------------------------------------------------------------
 		$permissions = array(
 			[
@@ -31,5 +28,6 @@ class ModulePermissionsSeeder extends Seeder {
 		}
 
 	} // run
+
 
 }

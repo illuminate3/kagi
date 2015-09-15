@@ -8,10 +8,7 @@ use Schema;
 
 
 class ModuleLinksSeeder extends Seeder {
-<<<<<<< HEAD:Database/Seeds/ModuleLinksSeeder.php
-=======
 
->>>>>>> a9220356c99b2ed72bbd9cafef4cdfe934ff9230:Database/Seeds/ModuleLinksSeeder.php
 
 	public function run()
 	{
