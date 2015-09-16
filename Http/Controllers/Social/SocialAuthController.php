@@ -15,6 +15,7 @@ use Flash;
 use Socialite;
 use Validator;
 
+use Theme;
 
 class SocialAuthController extends Controller
 {
@@ -34,6 +35,11 @@ class SocialAuthController extends Controller
 		$this->user_repo = $user_repo;
 // middleware
 		$this->middleware('guest');
+	}
+
+	public function getLogin()
+	{
+		return Theme::View('modules.kagi.social.login');
 	}
 
 

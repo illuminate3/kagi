@@ -2,6 +2,8 @@
 
 namespace App\Modules\kagi\Http\Controllers\Auth;
 
+use Config;
+
 trait RedirectsUsers
 {
 

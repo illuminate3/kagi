@@ -14,6 +14,7 @@ use Flash;
 class AuthenticateAdmin implements Middleware
 {
 
+
 	/**
 	 * Handle an incoming request.
 	 *
@@ -25,13 +26,13 @@ class AuthenticateAdmin implements Middleware
 	{
 //dd($request);
 
-		if (! Auth::user()->can('manage_admin')) {
+		if ( !Auth::user()->can('manage_admin') ) {
 			Flash::error(trans('kotoba::auth.error.permission'));
-
 			return new RedirectResponse(url(Config::get('kagi.auth_fail_redirect', '/')));
 		}
 
 		return $next($request);
 	}
+
 
 }

@@ -27,6 +27,9 @@ Route::group(['prefix' => 'kagi'], function() {
 	]);
 });
 
+Route::get('login', 'Social\SocialAuthController@getLogin');
+
+
 /*
 |--------------------------------------------------------------------------
 | /auth/
