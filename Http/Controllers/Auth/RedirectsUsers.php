@@ -16,7 +16,7 @@ trait RedirectsUsers
 			return $this->redirectPath;
 		}
 
-		return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+		return property_exists($this, 'redirectTo') ? $this->redirectTo : Config::get('login_return_path', '/auth/login');
 	}
 
 }
