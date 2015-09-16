@@ -44,7 +44,7 @@ class SocialAuthController extends Controller
 	 */
 	public function redirectToProvider()
 	{
-		return Socialite::driver(Config::get('kagi.kagi_social'))->redirect();
+		return Socialite::driver(Config::get('kagi_services.outh_provider'))->with(['hd' => Config::get('kagi_services.oauth_domain_limiter'), ''])->redirect();
 	}
 
 
@@ -55,7 +55,7 @@ class SocialAuthController extends Controller
 	 */
 	public function handleProviderCallback()
 	{
-		$user = Socialite::driver(Config::get('kagi.kagi_social'))->user();
+		$user = Socialite::driver(Config::get('kagi_services.outh_provider'))->user();
 //dd($user);
 
 // OAuth Two Providers
