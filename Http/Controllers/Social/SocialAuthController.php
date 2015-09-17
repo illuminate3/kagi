@@ -83,6 +83,7 @@ class SocialAuthController extends Controller
 		$check = $this->user_repo->getUserInfo($user->email);
 
 		if ($check == null) {
+		if ( Config::get('kagi_services.open_registration', true) === true ) {
 
 			$this->user_repo->createSocialUser($user);
 
@@ -90,6 +91,7 @@ class SocialAuthController extends Controller
 			$new_user = $this->user->find($new_user->id);
 			$new_user->syncRoles([Config::get('kagi.default_role')]);
 
+		}
 		}
 
 		$login_user = $this->user_repo->getUserInfo($user->email);

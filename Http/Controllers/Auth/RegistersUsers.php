@@ -33,21 +33,22 @@ trait RegistersUsers
 	 */
 	public function postRegister(Request $request)
 	{
-//dd($request);
-		$validator = $this->validator($request->all());
+		if ( Config::get('kagi_services.open_registration', true) === true ) {
+			$validator = $this->validator($request->all());
 //dd($validator);
 
-		if ($validator->fails()) {
-			$this->throwValidationException(
-				$request, $validator
-			);
+			if ($validator->fails()) {
+				$this->throwValidationException(
+					$request, $validator
+				);
+			}
+
+			$this->user_repo->store($request->all());
+
+			Flash::success(trans('kotoba::email.success.sent'));
+			return Theme::View('modules.kagi.auth.login');
 		}
 
-//		Auth::login($this->create($request->all()));
-//		$this->registrar_repo->create($request->all());
-		$this->user_repo->store($request->all());
-
-		Flash::success(trans('kotoba::email.success.sent'));
 		return Theme::View('modules.kagi.auth.login');
 	}
 
