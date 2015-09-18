@@ -7,16 +7,25 @@ Use DB;
 use Schema;
 
 
-class ModuleLinksSeeder extends Seeder {
+class ModuleLinksSeeder extends Seeder
+{
 
 
 	public function run()
 	{
 
+		$admin_id = DB::table('menus')
+			->where('name', '=', 'admin')
+			->pluck('id');
+
+		if ($admin_id == null) {
+			$admin_id = 1;
+		}
+
 // Links -------------------------------------------------------------------
 // Users
 		$link_names = array([
-			'menu_id'				=> 1, // admin menu
+			'menu_id'				=> $admin_id, // admin menu
 			'position'				=> 7,
 		]);
 
@@ -46,7 +55,7 @@ class ModuleLinksSeeder extends Seeder {
 
 // Permissions
 		$link_names = array([
-			'menu_id'				=> 1, // admin menu
+			'menu_id'				=> $admin_id, // admin menu
 			'position'				=> 7,
 		]);
 
@@ -76,7 +85,7 @@ class ModuleLinksSeeder extends Seeder {
 
 // Roles
 		$link_names = array([
-			'menu_id'				=> 1, // admin menu
+			'menu_id'				=> $admin_id, // admin menu
 			'position'				=> 7,
 		]);
 

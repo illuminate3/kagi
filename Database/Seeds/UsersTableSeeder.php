@@ -11,7 +11,8 @@ use Config;
 use DB;
 
 
-class UsersTableSeeder extends Seeder {
+class UsersTableSeeder extends Seeder
+{
 
 	public function __construct(
 			User $user,
