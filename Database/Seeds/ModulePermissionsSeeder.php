@@ -17,9 +17,19 @@ class ModulePermissionsSeeder extends Seeder
 // Permissions -------------------------------------------------------------
 		$permissions = array(
 			[
+				'name'				=> 'Manage Admin',
+				'slug'				=> 'manage_admin',
+				'description'		=> 'Give permission to user to access the admin area.'
+			],
+			[
 				'name'				=> 'Manage Users',
 				'slug'				=> 'manage_kagi',
 				'description'		=> 'Give permission to user to Manage Users.'
+			],
+			[
+				'name'				=> 'Manage Own Data',
+				'slug'				=> 'manage_own',
+				'description'		=> 'Allow users to manage their own data.'
 			],
 		 );
 
