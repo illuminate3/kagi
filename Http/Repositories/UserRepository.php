@@ -17,6 +17,7 @@ use Hash;
 
 class UserRepository extends BaseRepository {
 
+
 	/**
 	 * The User instance.
 	 *
@@ -218,7 +219,9 @@ class UserRepository extends BaseRepository {
 		$user->syncRoles($input['roles']);
 	}
 
+
 // Functions --------------------------------------------------
+
 
 	public function getRoles()
 	{
@@ -231,6 +234,7 @@ class UserRepository extends BaseRepository {
 		return null;
 	}
 
+
 	public function getUserRoles($user_id)
 	{
 		$user = DB::table('role_user')
@@ -242,6 +246,7 @@ class UserRepository extends BaseRepository {
 		return $user;
 	}
 
+
 	public function getUserInfo($email)
 	{
 		$user = DB::table('users')
@@ -251,6 +256,7 @@ class UserRepository extends BaseRepository {
 
 		return $user;
 	}
+
 
 	public function createSocialUser($user)
 	{
@@ -283,5 +289,37 @@ class UserRepository extends BaseRepository {
 			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
 		]);
 	}
+
+
+	public function updateSocialUser($user)
+	{
+		$email							= $user->email;
+		$avatar							= $user->avatar;
+
+		if ( ($avatar == null) || ($avatar == '') ) {
+			$avatar = Config::get('kagi.kagi_avatar', 'assets/images/usr.png');
+		}
+
+		$date = date("Y-m-d H:i:s");
+
+
+		$user_info = $this->getUserInfo($email);
+		$user = User::find($user_info->id);
+
+		$values = [
+			'password'				=> Hash::make($email),
+			'blocked'				=> 0,
+			'banned'				=> 0,
+			'confirmed'				=> 1,
+			'activated'				=> 1,
+			'activated_at'			=> $date,
+			'last_login'			=> $date,
+			'avatar'				=> $avatar,
+			'confirmation_code'		=> md5( microtime() . Config::get('app.key') )
+		];
+
+		$user->update($values);
+	}
+
 
 }

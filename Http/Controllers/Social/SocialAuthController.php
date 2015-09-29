@@ -3,6 +3,8 @@
 namespace App\Modules\kagi\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+
 use Caffeinated\Shinobi\Traits\ShinobiTrait;
 
 use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
@@ -17,8 +19,10 @@ use Validator;
 
 use Theme;
 
+
 class SocialAuthController extends Controller
 {
+
 
 	use ShinobiTrait;
 
@@ -81,30 +85,39 @@ class SocialAuthController extends Controller
 */
 
 		$check = $this->user_repo->getUserInfo($user->email);
+//dd($check->id);
 
-		if ($check == null) {
 		if ( Config::get('kagi_services.open_registration', true) === true ) {
-
-			$this->user_repo->createSocialUser($user);
-
-			$new_user = $this->user_repo->getUserInfo($user->email);
-			$new_user = $this->user->find($new_user->id);
-			$new_user->syncRoles([Config::get('kagi.default_role')]);
-
+			if ($check->id == null) {
+				$this->user_repo->createSocialUser($user);
+				$new_user = $this->user_repo->getUserInfo($user->email);
+				$new_user = $this->user->find($new_user->id);
+				$new_user->syncRoles([Config::get('kagi.default_role')]);
+			}
 		}
+
+		if ($check->password == null) {
+			if ( Config::get('kagi_services.semi_registration', true) === true ) {
+				$this->user_repo->updateSocialUser($user);
+			}
 		}
 
 		$login_user = $this->user_repo->getUserInfo($user->email);
-		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
+//dd( Str::lower($login_user->email) );
+//dd(Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]));
+
+//		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
+		if ( Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]) ) {
+//dd('checked');
 			Auth::loginUsingId($login_user->id);
 			$this->registrar_repo->touchLastLogin($login_user->email);
-//dd(Auth::user());
 
 			Flash::success(trans('kotoba::auth.success.login'));
-			return redirect()->intended(Config::get('kagi.login_return_path', '/'));
+			return redirect(Config::get('kagi.login_return_path', '/'));
 		}
 
-		return redirect('social/login');
+//dd('huh??');
+		return redirect(Config::get('kagi.auth_fail_redirect', '/login'));
 
 	}
 

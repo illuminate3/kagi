@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class KagiDatabaseSeeder extends Seeder
 {
 
+
 	/**
 	 * Run the database seeds.
 	 *
@@ -26,5 +27,6 @@ class KagiDatabaseSeeder extends Seeder
 		$this->call('App\Modules\Kagi\Database\Seeds\UsersSeeder');
 
 	}
+
 
 }

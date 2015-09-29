@@ -41,8 +41,9 @@ class UsersSeeder extends Seeder
 			$c['id']				= $line[0];
 			$c['name']				= $line[3];
 			$c['email']				= $line[4];
-			$c['confirmed']			= 1;
-			$c['activated']			= 1;
+			$c['password']			= Hash::make($line[4]);
+// 			$c['confirmed']			= 1;
+// 			$c['activated']			= 1;
 
 			DB::table('users')->insert($c);
 
