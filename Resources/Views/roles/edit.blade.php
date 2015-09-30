@@ -7,17 +7,14 @@
 @stop
 
 @section('styles')
-	<link href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}" rel="stylesheet">
-	<link href="{{ asset('assets/vendors/illuminate3/css/standard.css') }}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/multi-select_v0_9_12/css/multi-select.css') }}">
 @stop
 
 @section('scripts')
-	<script type="text/javascript" src="{{ asset('assets/js/restfulizer.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('assets/vendors/multi-select_v0_9_12/js/jquery.multi-select.js') }}"></script>
 @stop
 
 @section('inline-scripts')
-	var text_confirm_message = '{{ trans('kotoba::account.ask.delete') }}';
 	jQuery(document).ready(function($) {
 		$('#my-select').multiSelect(
 			{
@@ -78,7 +75,10 @@
 </div>
 </div>
 
+
 <hr>
+
+
 <h3>
 	<i class="fa fa-gavel fa-fw"></i>
 	{{ Lang::choice('kotoba::permission.permission', 2) }}
@@ -93,7 +93,9 @@
 @endforeach
 </select>
 
+
 <hr>
+
 
 <div class="row">
 <div class="col-sm-12">
