@@ -106,8 +106,8 @@ class SocialAuthController extends Controller
 //dd( Str::lower($login_user->email) );
 //dd(Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]));
 
-//		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
-		if ( Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]) ) {
+		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
+//		if ( Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]) ) {
 //dd('checked');
 			Auth::loginUsingId($login_user->id);
 			$this->registrar_repo->touchLastLogin($login_user->email);
