@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers\Auth;
+namespace App\Modules\Kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\kagi\Http\Controllers\Auth\ThrottlesLogins;
-use App\Modules\kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
+use App\Modules\Kagi\Http\Controllers\Auth\ThrottlesLogins;
+use App\Modules\Kagi\Http\Controllers\Auth\AuthenticatesAndRegistersUsers;
 
 use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
 use App\Modules\Kagi\Http\Models\User;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers\Auth;
+namespace App\Modules\Kagi\Http\Controllers\Auth;
 
 trait AuthenticatesAndRegistersUsers
 {

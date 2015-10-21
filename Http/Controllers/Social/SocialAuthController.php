@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers\Social;
+namespace App\Modules\Kagi\Http\Controllers\Social;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers\Auth;
+namespace App\Modules\Kagi\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 
-use App\Modules\kagi\Http\Controllers\Auth\ResetsPasswords;
+use App\Modules\Kagi\Http\Controllers\Auth\ResetsPasswords;
 
 
 class PasswordController extends Controller

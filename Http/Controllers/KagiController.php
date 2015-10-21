@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\kagi\Http\Controllers;
+namespace App\Modules\Kagi\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 // use Illuminate\Foundation\Bus\DispatchesJobs;
