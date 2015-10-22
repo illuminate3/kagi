@@ -1,9 +1,18 @@
-@extends($theme_back)
+@extends($theme_simple)
 
 @section('content')
-<div class="row">
 
-	<div class="col-md-8 col-md-offset-2">
+
+
+<div id="flex-container">
+<div id="flex-item">
+
+	<div class="padding-bottom-xl">
+		<img src="{{ asset('themes/' . $activeTheme . '/assets/img/logo.png') }}">
+	</div>
+
+<div class="row padding-top-xl">
+<div class="col-sm-12">
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -41,7 +50,12 @@
 			</div><!-- ./panel-body -->
 		</div><!-- ./panel -->
 
-	</div><!-- ./col -->
-
+</div><!-- ./col -->
 </div><!-- ./row -->
+
+</div>
+</div>
+
+
+
 @endsection

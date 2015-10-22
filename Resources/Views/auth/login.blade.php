@@ -1,8 +1,18 @@
-@extends($theme_back)
+@extends($theme_simple)
 
 @section('content')
-<div class="row">
-<div class="col-md-4 col-md-offset-4">
+
+
+
+<div id="flex-container">
+<div id="flex-item">
+
+	<div class="padding-bottom-xl">
+		<img src="{{ asset('themes/' . $activeTheme . '/assets/img/logo.png') }}">
+	</div>
+
+<div class="row padding-top-xl">
+<div class="col-sm-12">
 
 <div role="tabpanel">
 
@@ -12,6 +22,7 @@
 		<li role="presentation"><a href="/password/email" aria-controls="forgot_password" role="tab">{{ trans('kotoba::button.forgot_password') }}</a></li>
 		<li role="presentation"><a href="/auth/register" aria-controls="register" role="tab">{{ trans('kotoba::button.register') }}</a></li>
 		<li role="presentation"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">{{ trans('kotoba::button.admin') }}</a></li>
+		@include($activeTheme . '::' . '_partials.language')
 	</ul>
 
 	<!-- Tab panes -->
@@ -71,4 +82,10 @@
 
 </div><!-- ./col -->
 </div><!-- ./row -->
+
+</div>
+</div>
+
+
+
 @endsection
