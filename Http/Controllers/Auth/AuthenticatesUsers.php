@@ -133,7 +133,7 @@ trait AuthenticatesUsers
 		Auth::logout();
 
 		Flash::error(trans('kotoba::auth.success.logout'));
-		return redirect( property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : Config::get('logout_return_path', '/login') );
+		return redirect( property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : Config::get('kagi.logout_return_path', '/login') );
 	}
 
 
