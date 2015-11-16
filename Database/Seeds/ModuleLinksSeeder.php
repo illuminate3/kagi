@@ -26,8 +26,8 @@ class ModuleLinksSeeder extends Seeder
 // Users
 		$link_names = array([
 			'menu_id'				=> $admin_id, // admin menu
-			'status'				=> 1,
-			'position'				=> 7,
+			'status_id'				=> 1,
+			'position'				=> 7
 		]);
 
 		if (Schema::hasTable('menulinks'))
@@ -43,6 +43,7 @@ class ModuleLinksSeeder extends Seeder
 
 		$ink_name_trans = array([
 			'title'					=> 'Users',
+			'status'				=> 1,
 			'url'					=> '/admin/users',
 			'menulink_id'			=> $last_insert_id,
 			'locale_id'				=> $locale_id // English ID
@@ -56,8 +57,8 @@ class ModuleLinksSeeder extends Seeder
 // Permissions
 		$link_names = array([
 			'menu_id'				=> $admin_id, // admin menu
-			'status'				=> 1,
-			'position'				=> 7,
+			'status_id'				=> 1,
+			'position'				=> 7
 		]);
 
 		if (Schema::hasTable('menulinks'))
@@ -73,6 +74,7 @@ class ModuleLinksSeeder extends Seeder
 
 		$ink_name_trans = array([
 			'title'					=> 'Permissions',
+			'status'				=> 1,
 			'url'					=> '/admin/permissions',
 			'menulink_id'			=> $last_insert_id,
 			'locale_id'				=> $locale_id // English ID
@@ -86,8 +88,8 @@ class ModuleLinksSeeder extends Seeder
 // Roles
 		$link_names = array([
 			'menu_id'				=> $admin_id, // admin menu
-			'status'				=> 1,
-			'position'				=> 7,
+			'status_id'				=> 1,
+			'position'				=> 7
 		]);
 
 		if (Schema::hasTable('menulinks'))
@@ -103,6 +105,7 @@ class ModuleLinksSeeder extends Seeder
 
 		$ink_name_trans = array([
 			'title'					=> 'Roles',
+			'status'				=> 1,
 			'url'					=> '/admin/roles',
 			'menulink_id'			=> $last_insert_id,
 			'locale_id'				=> $locale_id // English ID
