@@ -85,6 +85,11 @@ class KagiServiceProvider extends ServiceProvider
 			'Laravel\Socialite\Facades\Socialite'
 		);
 
+		$app = $this->app;
+
+		$app->register('Caffeinated\Shinobi\ShinobiServiceProvider');
+		$app->register('Laravel\Socialite\SocialiteServiceProvider');
+
 	}
 
 
@@ -98,8 +103,6 @@ class KagiServiceProvider extends ServiceProvider
 		$app = $this->app;
 
 		$app->register('App\Modules\Kagi\Providers\RouteServiceProvider');
-		$app->register('Caffeinated\Shinobi\ShinobiServiceProvider');
-		$app->register('Laravel\Socialite\SocialiteServiceProvider');
 	}
 
 }
