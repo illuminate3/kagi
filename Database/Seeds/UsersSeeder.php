@@ -9,7 +9,7 @@ use App\Modules\Kagi\Http\Models\User as User;
 
 use Config;
 use DB;
-
+//use Hash;
 
 class UsersSeeder extends Seeder
 {
@@ -39,13 +39,99 @@ class UsersSeeder extends Seeder
 
 			$c = array();
 			$c['id']				= $line[0];
-			$c['name']				= $line[3];
-			$c['email']				= $line[4];
-			$c['password']			= Hash::make($line[4]);
+			$c['name']				= $line[2];
+			$c['email']				= $line[3];
+//			$c['password']			= Hash::make($line[4]);
+			$c['password']			= bcrypt($line[3]);
 // 			$c['confirmed']			= 1;
 // 			$c['activated']			= 1;
 
 			DB::table('users')->insert($c);
+
+			$d = array();
+			$d['site_id']				= $line[6];
+			$d['user_id']				= $line[0];
+			DB::table('site_user')->insert($d);
+
+			if ( $line[7] != null ) {
+				$d = array();
+				$d['site_id']				= $line[7];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[8] != null ) {
+				$d = array();
+				$d['site_id']				= $line[8];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[9] != null ) {
+				$d = array();
+				$d['site_id']				= $line[9];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[10] != null ) {
+				$d = array();
+				$d['site_id']				= $line[10];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[11] != null ) {
+				$d = array();
+				$d['site_id']				= $line[11];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[12] != null ) {
+				$d = array();
+				$d['site_id']				= $line[12];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[13] != null ) {
+				$d = array();
+				$d['site_id']				= $line[13];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[14] != null ) {
+				$d = array();
+				$d['site_id']				= $line[14];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[15] != null ) {
+				$d = array();
+				$d['site_id']				= $line[15];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[16] != null ) {
+				$d = array();
+				$d['site_id']				= $line[16];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+			if ( $line[17] != null ) {
+				$d = array();
+				$d['site_id']				= $line[17];
+				$d['user_id']				= $line[0];
+				DB::table('site_user')->insert($d);
+			}
+
+
+
 
 
 // Attach role to user

@@ -39,19 +39,19 @@ class UsersTableSeeder extends Seeder
 			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
 			'avatar'				=> 'assets/images/usr.png'
 		);
-		$user = array(
-			'name'					=> 'user',
-			'email'					=> 'user@user.com',
-			'password'				=> bcrypt('kagiuser'),
-			'activated_at'			=> date("Y-m-d H:i:s"),
-			'created_at'			=> date("Y-m-d H:i:s"),
-			'blocked'				=> 0,
-			'banned'				=> 0,
-			'confirmed'				=> 1,
-			'activated'				=> 1,
-			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
-			'avatar'				=> 'assets/images/usr.png'
-		);
+// 		$user = array(
+// 			'name'					=> 'user',
+// 			'email'					=> 'user@user.com',
+// 			'password'				=> bcrypt('kagiuser'),
+// 			'activated_at'			=> date("Y-m-d H:i:s"),
+// 			'created_at'			=> date("Y-m-d H:i:s"),
+// 			'blocked'				=> 0,
+// 			'banned'				=> 0,
+// 			'confirmed'				=> 1,
+// 			'activated'				=> 1,
+// 			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
+// 			'avatar'				=> 'assets/images/usr.png'
+// 		);
 
 		$permissions = array(
 			[
@@ -80,9 +80,9 @@ class UsersTableSeeder extends Seeder
 		 );
 
 // Create Permissions
-		DB::table('permissions')->delete();
-			$statement = "ALTER TABLE permissions AUTO_INCREMENT = 1;";
-			DB::unprepared($statement);
+// 		DB::table('permissions')->delete();
+// 			$statement = "ALTER TABLE permissions AUTO_INCREMENT = 1;";
+// 			DB::unprepared($statement);
 		DB::table('permissions')->insert( $permissions );
 
 // Create Roles
@@ -105,7 +105,7 @@ class UsersTableSeeder extends Seeder
 			$statement = "ALTER TABLE users AUTO_INCREMENT = 1;";
 			DB::unprepared($statement);
 		DB::table('users')->insert($admin);
-		DB::table('users')->insert($user);
+//		DB::table('users')->insert($user);
 
 // Attach permission to role
 		$role = $this->role->find(1);

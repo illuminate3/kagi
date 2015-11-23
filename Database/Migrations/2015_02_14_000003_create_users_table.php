@@ -38,7 +38,8 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 
 			$table->string('name');
-			$table->string('email')->unique()->index();
+//			$table->string('email')->unique()->index();
+			$table->string('email')->index();
 			$table->string('password')->nullable()->index();
 
 //			$table->string('remember_token')->nullable()->index();
