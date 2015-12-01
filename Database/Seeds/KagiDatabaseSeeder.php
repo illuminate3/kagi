@@ -21,10 +21,10 @@ class KagiDatabaseSeeder extends Seeder
 
 		$this->call('App\Modules\Kagi\Database\Seeds\ModuleLinksSeeder');
 		$this->call('App\Modules\Kagi\Database\Seeds\ModulePermissionsSeeder');
-		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder');
 
-		$this->call('App\Modules\Kagi\Database\Seeds\UsersMainSeeder');
-		$this->call('App\Modules\Kagi\Database\Seeds\UsersSeeder');
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersTableSeeder'); // broken
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersMainSeeder'); // admin only
+		$this->call('App\Modules\Kagi\Database\Seeds\UsersSeeder'); // csv
 
 	}
 
