@@ -191,8 +191,17 @@ class UsersController extends KagiController {
 	{
 //		$query = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
 //			->orderBy('users.email', 'ASC');
-		$query = User::select('id', 'name', 'email', 'blocked', 'banned', 'confirmed', 'activated', 'created_at')
-			->orderBy('users.email', 'ASC');
+		$query = User::select(
+			'users.id',
+			'users.name',
+			'users.email',
+			'users.blocked',
+			'users.banned',
+			'users.confirmed',
+			'users.activated',
+			'users.created_at'
+			);
+//			->orderBy('users.email', 'ASC');
 //dd($query);
 
 		return Datatables::of($query)

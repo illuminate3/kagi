@@ -25,49 +25,49 @@ oTable =
 		"columns": [
 			{
 				data: 'id',
-				name: 'id',
+				name: 'users.id',
 				searchable: false,
 				visible: false
 			},
 			{
 				data: 'name',
-				name: 'name',
+				name: 'users.name',
 				orderable: true,
 				searchable: true
 			},
 			{
 				data: 'email',
-				name: 'email',
+				name: 'users.email',
 				orderable: true,
 				searchable: true
 			},
 			{
 				data: 'blocked',
-				name: 'blocked',
+				name: 'users.blocked',
 				orderable: true,
 				searchable: false
 			},
 			{
 				data: 'banned',
-				name: 'banned',
+				name: 'users.banned',
 				orderable: true,
 				searchable: false
 			},
 			{
 				data: 'confirmed',
-				name: 'confirmed',
+				name: 'users.confirmed',
 				orderable: true,
 				searchable: false
 			},
 			{
 				data: 'activated',
-				name: 'activated',
+				name: 'users.activated',
 				orderable: true,
 				searchable: false
 			},
 			{
 				data: 'created_at',
-				name: 'created_at',
+				name: 'users.created_at',
 				orderable: true,
 				searchable: true
 			},
