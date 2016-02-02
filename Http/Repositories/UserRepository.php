@@ -258,6 +258,51 @@ class UserRepository extends BaseRepository {
 	}
 
 
+	public function createEmployee($userData)
+	{
+//dd($userData);
+
+		$date = date("Y-m-d H:i:s");
+
+		$name						= $userData['name'];
+		$email						= $userData['email'];
+		$password					= Hash::make($userData['email']);
+
+		$blocked					= Config::get('kagi.blocked', '0');
+		$banned						= Config::get('kagi.banned', '0');
+		$confirmed					= Config::get('kagi.confirmed', '1');
+		$confirmation_code			= null;
+		$activated					= Config::get('kagi.activated', '1');
+		$activated_at				= $date;
+
+		$check = $this->checkEmailExists($email);
+		if ($check == null) {
+			User::create([
+				'name'					=> $name,
+				'email'					=> $email,
+				'password'				=> $password,
+				'blocked'				=> $blocked,
+				'banned'				=> $banned,
+				'confirmed'				=> $confirmed,
+				'activated'				=> $activated,
+				'activated_at'			=> $activated_at,
+				'confirmation_code'		=> $confirmation_code
+			]);
+		} else {
+			Flash::error( trans('kotoba::hr.error.employee_create') );
+			return redirect('employees');
+		}
+
+		$check_again = $this->getUserInfo($email);
+//dd($check_again->id);
+		$user = $this->user->find($check_again->id);
+		$user->syncRoles([Config::get('kagi.default_role')]);
+
+//		$this->registrar_repo->sendConfirmation($name, $email, $confirmation_code);
+		return;
+	}
+
+
 	public function createSocialUser($user)
 	{
 		$name							= $user->name;
@@ -319,6 +364,18 @@ class UserRepository extends BaseRepository {
 		];
 
 		$user->update($values);
+	}
+
+
+	public function checkEmailExists($email)
+	{
+//dd($email);
+		$user = DB::table('users')
+			->where('email', '=', $email)
+			->first();
+//dd($user);
+
+		return $user;
 	}
 
 
