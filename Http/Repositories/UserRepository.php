@@ -13,6 +13,7 @@ use DateTime;
 use DB;
 use Eloquent;
 use Hash;
+use Setting;
 
 
 class UserRepository extends BaseRepository {
@@ -265,8 +266,10 @@ class UserRepository extends BaseRepository {
 		$date = date("Y-m-d H:i:s");
 
 		$name						= $userData['name'];
+//		$email						= $userData['email'] . '@' . Str::lower(Setting::get('email_domain'));
 		$email						= $userData['email'];
-		$password					= Hash::make($userData['email']);
+
+		$password					= Hash::make($email);
 
 		$blocked					= Config::get('kagi.blocked', '0');
 		$banned						= Config::get('kagi.banned', '0');
@@ -290,7 +293,7 @@ class UserRepository extends BaseRepository {
 			]);
 		} else {
 			Flash::error( trans('kotoba::hr.error.employee_create') );
-			return redirect('employees');
+			return redirect('/admin/employees/create');
 		}
 
 		$check_again = $this->getUserInfo($email);
@@ -299,7 +302,10 @@ class UserRepository extends BaseRepository {
 		$user->syncRoles([Config::get('kagi.default_role')]);
 
 //		$this->registrar_repo->sendConfirmation($name, $email, $confirmation_code);
-		return;
+
+		$user_id = $user->id;
+
+		return $user_id;
 	}
 
 

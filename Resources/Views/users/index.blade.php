@@ -90,10 +90,17 @@ oTable =
 <div class="row">
 <h1>
 	<p class="pull-right">
-	<a href="/admin/users/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
-		<i class="fa fa-plus fa-fw"></i>
-		{{ trans('kotoba::button.new') }}
-	</a>
+	@if ( Module::exists('jinji') )
+		<a href="/admin/employees/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+			<i class="fa fa-plus fa-fw"></i>
+			{{ trans('kotoba::button.new') }}
+		</a>
+	@else
+		<a href="/admin/users/create" class="btn btn-primary" title="{{ trans('kotoba::button.new') }}">
+			<i class="fa fa-plus fa-fw"></i>
+			{{ trans('kotoba::button.new') }}
+		</a>
+	@endif
 	</p>
 	<i class="fa fa-users fa-lg"></i>
 		{{ Lang::choice('kotoba::account.user', 2) }}
