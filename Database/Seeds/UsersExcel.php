@@ -127,12 +127,12 @@ echo PHP_EOL;
 			DB::unprepared($statement);
 
 // delete subjects
-		DB::table('subjects')->delete();
-			$statement = "ALTER TABLE subjects AUTO_INCREMENT = 1;";
-			DB::unprepared($statement);
-		DB::table('subject_translations')->delete();
-			$statement = "ALTER TABLE subject_translations AUTO_INCREMENT = 1;";
-			DB::unprepared($statement);
+// 		DB::table('subjects')->delete();
+// 			$statement = "ALTER TABLE subjects AUTO_INCREMENT = 1;";
+// 			DB::unprepared($statement);
+// 		DB::table('subject_translations')->delete();
+// 			$statement = "ALTER TABLE subject_translations AUTO_INCREMENT = 1;";
+// 			DB::unprepared($statement);
 
 
 echo PHP_EOL;
@@ -149,84 +149,8 @@ echo PHP_EOL;
 		$file_handle = fopen($csv, "r");
 
 echo PHP_EOL;
-echo '------------------------------------------ open file ------------------------------------------';
+echo '------------------------------------------ create admin user ------------------------------------------';
 echo PHP_EOL;
-
-		while (!feof($file_handle)) {
-
-			$line = fgetcsv($file_handle);
-			if (empty($line)) {
-				continue; // skip blank lines
-			}
-
-/*
-	0 ... id
-	1 ... first_name
-	2 ... last_name
-	3 ... email
-	4 ... employee_type_id
-	5 ... department_id
-	6 ... job_title_id
-	7 ... secondary_job_title_id
-	8 ... supervisor_id
-	9 ... isSupervisor
-	10 ... site_id
-	11 ... school_lea_Number
-	12 ... state_ID
-	13 ... phone_1
-	14 ... address
-	15 ... city
-	16 ... state
-	17 ... zipcode
-	18 ... grade
-	19 ... course_1
-	20 ... course_2
-	21 ... course_3
-	22 ... course_4
-*/
-
-
-// attach user to subject
-			if ( $line[19] != '' ) {
-				$subject_translations = array();
-				$subject_translations['subject_id']			= $line[0];
-				$subject_translations['name']				= $line[1];
-				$subject_translations['description']		= $line[1];
-				$subject_translations['locale_id']			= $locale_id;
-
-				DB::table('subject_translations')->insert($subject_translations);
-
-				$last_insert_id = DB::getPdo()->lastInsertId();
-				$subjects = array();
-				$subjects['id']								= $last_insert_id;
-
-				DB::table('subjects')->insert($subjects);
-			}
-			if ( $line[20] != '' ) {
-				$d = array();
-				$d['subject_id']			= $line[20];
-				$d['user_id']				= $line[0];
-				DB::table('subject_user')->insert($d);
-			}
-			if ( $line[21] != '' ) {
-				$d = array();
-				$d['subject_id']			= $line[21];
-				$d['user_id']				= $line[0];
-				DB::table('subject_user')->insert($d);
-			}
-			if ( $line[22] != '' ) {
-				$d = array();
-				$d['subject_id']			= $line[22];
-				$d['user_id']				= $line[0];
-				DB::table('subject_user')->insert($d);
-			}
-
-
-
-
-		}
-
-		fclose($file_handle);
 
 
 		$admin = array(
@@ -271,7 +195,6 @@ echo PHP_EOL;
 
 		DB::table('employees')->insert( $admin_employee );
 
-
 /*
 id	first_name	last_name	email	employee_type_id	department_id	job_title_id	secondary_job_title_id	supervisor_id	isSupervisor	site_id	school_lea_Number	state_ID	phone_1	address	city	state	zipcode	grade	course_1	course_2	course_3	course_4
 
@@ -288,6 +211,37 @@ id	first_name	last_name	email	employee_type_id	department_id	job_title_id	second
 			'confirmation_code'		=> md5(microtime().Config::get('app.key')),
 			'avatar'				=> 'assets/images/usr.png'
 		);
+*/
+
+
+/*
+	0 ... id
+	1 ... first_name
+	2 ... last_name
+	3 ... email
+
+	4 ... employee_type_id
+	5 ... department_id
+	6 ... job_title_id
+	7 ... secondary_job_title_id
+	8 ... supervisor_id
+	9 ... isSupervisor
+
+	10 ... site_id
+	11 ... school_lea_Number
+	12 ... state_ID
+
+	13 ... phone_1
+	14 ... address
+	15 ... city
+	16 ... state
+	17 ... zipcode
+
+	18 ... grade
+	19 ... course_1
+	20 ... course_2
+	21 ... course_3
+	22 ... course_4
 */
 
 
@@ -328,13 +282,7 @@ echo PHP_EOL;
 			$user = User::find($line[0]);
 			$user->roles()->attach(2);
 
-// attach user to site
-			$d = array();
-			$d['site_id']				= $line[10];
-			$d['user_id']				= $line[0];
-			DB::table('site_user')->insert($d);
-
-echo 'insert user -- ' . $line[0];
+echo 'users -- ' . $line[0];
 echo PHP_EOL;
 
 
@@ -348,7 +296,6 @@ echo PHP_EOL;
 
 			$c['email_1']			= $line[3];
 			$c['phone_1']			= $line[13];
-//			$c['phone_2']			= $line[];
 			$c['address']			= $line[14];
 			$c['city']				= $line[15];
 			$c['state']				= $line[16];
@@ -356,7 +303,7 @@ echo PHP_EOL;
 
 			DB::table('profiles')->insert($c);
 
-echo 'update profile -- ' . $line[0];
+echo 'profiles -- ' . $line[0];
 echo PHP_EOL;
 
 
@@ -393,17 +340,16 @@ echo PHP_EOL;
 			$c['user_id']					= $line[0];
 			$c['profile_id']				= $line[0];
 			$c['employee_type_id']			= $line[4];
-			$c['department_id']				= $line[6];
+			$c['department_id']				= $line[5];
 			$c['job_title_id']				= $line[6];
 			$c['secondary_job_title_id']	= $line[7];
-			$c['site_id']					= $line[10];
 			$c['isSupervisior']				= $line[9];
 			$c['supervisor_id']				= $line[8];
 
-			$c['site_number_id']			= $line[11];
+//			$c['site_number_id']			= $line[11];
 			$c['staff_id']					= $line[12];
+
 			$c['primary_grade_id']			= $line[18];
-			$c['primary_site_id']			= $line[10];
 			$c['primary_subject_id']		= $line[19];
 
 			$c['status_id']					= 1;
@@ -415,19 +361,91 @@ echo PHP_EOL;
 				$c['isTeacher']				= 0;
 			}
 
+			$c['site_id']					= $line[10];
+			$c['primary_site_id']			= $line[10];
+
+			$site_ID = 4;
+			if ( $line[10] != '' ) {
+
+				if ( $line[10] == 1 ) {
+					$site_ID = 2;
+				}
+				if ( $line[10] == 2 ) {
+					$site_ID = 5;
+				}
+				if ( $line[10] == 3 ) {
+					$site_ID = 20;
+				}
+				if ( $line[10] == 4 ) {
+					$site_ID = 9;
+				}
+				if ( $line[10] == 5 ) {
+					$site_ID = 10;
+				}
+				if ( $line[10] == 6 ) {
+					$site_ID = 11;
+				}
+				if ( $line[10] == 7 ) {
+					$site_ID = 12;
+				}
+				if ( $line[10] == 8 ) {
+					$site_ID = 13;
+				}
+				if ( $line[10] == 11 ) {
+					$site_ID = 3;
+				}
+				if ( $line[10] == 12 ) {
+					$site_ID = 16;
+				}
+				if ( $line[10] == 13 ) {
+					$site_ID = 17;
+				}
+				if ( $line[10] == 14 ) {
+					$site_ID = 7;
+				}
+				if ( $line[10] == 15 ) {
+					$site_ID = 21;
+				}
+				if ( $line[10] == 16 ) {
+					$site_ID = 22;
+				}
+				if ( $line[10] == 17 ) {
+					$site_ID = 23;
+				}
+				if ( $line[10] == 18 ) {
+					$site_ID = 24;
+				}
+
+			}
+
+
 			DB::table('employees')->insert($c);
 
-echo 'update employee info -- ' . $line[0];
+echo 'employees -- ' . $line[0];
+echo PHP_EOL;
+
+
+// attach user to site
+			$d = array();
+			$d['site_id']				= $site_ID;
+			$d['user_id']				= $line[0];
+			DB::table('site_user')->insert($d);
+
+echo 'site_user -- ' . $line[0];
 echo PHP_EOL;
 
 
 // attach user to grade
-// 			if ( $line[18] != '' ) {
-// 				$d = array();
-// 				$d['grade_id']				= $line[18];
-// 				$d['user_id']				= $line[0];
-// 				DB::table('site_user')->insert($d);
-// 			}
+			if ( $line[18] != '' ) {
+				$d = array();
+				$d['grade_id']				= $line[18];
+				$d['user_id']				= $line[0];
+				DB::table('grade_user')->insert($d);
+			}
+
+echo 'grade_user -- ' . $line[0];
+echo PHP_EOL;
+
 
 // attach user to subject
 			if ( $line[19] != '' ) {
@@ -455,7 +473,7 @@ echo PHP_EOL;
 				DB::table('subject_user')->insert($d);
 			}
 
-echo 'update subject info -- ' . $line[0];
+echo 'subject_user -- ' . $line[0];
 echo PHP_EOL;
 
 
