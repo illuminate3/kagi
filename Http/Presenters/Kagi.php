@@ -4,6 +4,8 @@ namespace App\Modules\Kagi\Http\Presenters;
 
 use Laracasts\Presenter\Presenter;
 
+use DB;
+
 
 class Kagi extends Presenter {
 
@@ -209,5 +211,17 @@ class Kagi extends Presenter {
 
 		return trim($return, ', ');
 	}
+
+
+	public function profileFirstName($user_id)
+	{
+		$user = DB::table('profiles')
+			->where('user_id', '=', $user_id)
+			->pluck('first_name');
+		$user = strtoupper($user);
+
+		return $user;
+	}
+
 
 }
