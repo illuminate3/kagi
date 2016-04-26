@@ -224,4 +224,111 @@ class Kagi extends Presenter {
 	}
 
 
+// JINJI
+
+
+	public function jobTitleName($job_title_id, $locale_id)
+	{
+		$jobtitle = DB::table('job_title_translations')
+			->where('locale_id', '=', $locale_id)
+			->where('id', '=', $job_title_id, 'AND')
+			->pluck('name');
+		if ( empty($jobtitle) ) {
+			return trans('kotoba::general.none');
+		} else {
+			return $jobtitle;
+		}
+	}
+
+
+	public function SubjectName($subject_id, $locale_id)
+	{
+		$subject = DB::table('subject_translations')
+			->where('locale_id', '=', $locale_id)
+			->where('id', '=', $subject_id, 'AND')
+			->pluck('name');
+		if ( empty($subject) ) {
+			return trans('kotoba::general.none');
+		} else {
+			return $subject;
+		}
+	}
+
+
+
+
+	public function employeeName($user_id)
+	{
+		$employee = DB::table('profiles')
+			->where('user_id', '=', $user_id)
+			->select('last_name', 'first_name', 'middle_initial')
+			->first();
+//dd($user_id);
+
+		if ( count($employee) ) {
+			return $employee->last_name . ',&nbsp;' . $employee->first_name . '&nbsp;' . $employee->middle_initial;
+		} else {
+			return trans('kotoba::general.none');
+		}
+
+	}
+
+
+	public function employeeEmail($user_id)
+	{
+		$employee = DB::table('profiles')
+			->where('user_id', '=', $user_id)
+			->pluck('email_1');
+//dd($employee);
+
+		if ( count($employee) ) {
+			return $employee;
+		} else {
+			return trans('kotoba::general.none');
+		}
+
+	}
+
+
+	public function employeeJobTitle($user_id, $locale_id)
+	{
+		$job_title_id = DB::table('employees')
+			->where('user_id', '=', $user_id)
+			->pluck('job_title_id');
+//dd($employee);
+		$employee = $this->jobTitleName($job_title_id, $locale_id);
+
+		if ( count($employee) ) {
+			return $employee;
+		} else {
+			return trans('kotoba::general.none');
+		}
+
+	}
+
+
+	public function employeeSubjects($user_id, $locale_id)
+	{
+		$subjects = DB::table('subject_user')
+			->where('user_id', '=', $user_id)
+			->get();
+//dd($subjects);
+
+		$all_subjects = '';
+		if ( count($subjects) ) {
+			foreach( $subjects as $subject)
+			{
+//dd($subject);
+				$all_subjects = $this->SubjectName($subject->subject_id, $locale_id) . ',&nbsp;' . $all_subjects;
+			}
+			return trim($all_subjects, ',&nbsp;');
+		} else {
+			return trans('kotoba::general.none');
+		}
+
+	}
+
+
+
+
 }
