@@ -53,4 +53,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 // Functions ---------------------------------------------------------------
 
 
+	public function getFullEmailAttribute()
+	{
+		return $this->first_name . ' ' . $this->last_name . ' :: ' . $this->email_1;
+	}
+
+
 }
