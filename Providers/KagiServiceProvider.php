@@ -85,6 +85,11 @@ class KagiServiceProvider extends ServiceProvider
 			'Laravel\Socialite\Facades\Socialite'
 		);
 
+		AliasLoader::getInstance()->alias(
+			'Shinobi',
+			'Caffeinated\Shinobi\Facades\Shinobi'
+		);
+
 		$app = $this->app;
 
 		$app->register('Caffeinated\Shinobi\ShinobiServiceProvider');
