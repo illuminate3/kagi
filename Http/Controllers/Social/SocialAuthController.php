@@ -106,6 +106,9 @@ class SocialAuthController extends Controller
 //dd( Str::lower($login_user->email) );
 //dd(Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]));
 
+		$login_return_path = Config::get('kagi.login_return_path', '/');
+//dd($login_return_path);
+
 		if ( Auth::attempt(['email' => $login_user->email, 'password' => $login_user->email]) ) {
 //		if ( Auth::attempt(['email' => $login_user->email, 'password' => Str::lower($login_user->email)]) ) {
 //dd('checked');
@@ -113,7 +116,7 @@ class SocialAuthController extends Controller
 			$this->registrar_repo->touchLastLogin($login_user->email);
 
 			Flash::success(trans('kotoba::auth.success.login'));
-			return redirect(Config::get('kagi.login_return_path', '/'));
+			return redirect($login_return_path);
 		}
 
 //dd('huh??');
