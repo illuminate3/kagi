@@ -49,8 +49,8 @@ trait AuthenticatesUsers
 
 		$credentials = $this->getCredentials($request);
 
-		$check_if_allow_direct = $this->registrar_repo->checkAllowDirect($credentials['email']);
-		if ( $check_if_allow_direct == true ) {
+//		$check_if_allow_direct = $this->registrar_repo->checkAllowDirect($credentials['email']);
+//		if ( $check_if_allow_direct == true ) {
 
 			$check_if_no_bans = $this->registrar_repo->checkUserApproval($credentials['email']);
 			if ( $check_if_no_bans == true ) {
@@ -68,7 +68,7 @@ trait AuthenticatesUsers
 
 			}
 
-		}
+//		}
 
 			return redirect($this->loginPath())
 				->withInput($request->only($this->loginUsername(), 'remember'))
