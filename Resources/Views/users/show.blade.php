@@ -159,6 +159,10 @@
 						<td>{{ trans('kotoba::general.activated') }}</td>
 						<td>{!! $user->present()->iconActivated !!}</td>
 					</tr>
+					<tr>
+						<td>{{ trans('kotoba::auth.allow_direct') }}</td>
+						<td>{!! $user->present()->iconAllowDirect !!}</td>
+					</tr>
 				</tbody>
 			</table>
 			</div><!-- ./responsive -->

@@ -189,8 +189,6 @@ class UsersController extends KagiController {
 	*/
 	public function data()
 	{
-//		$query = User::select(array('users.id','users.name','users.email','users.blocked','users.banned','users.confirmed','users.activated', 'users.created_at'))
-//			->orderBy('users.email', 'ASC');
 		$query = User::select(
 			'users.id',
 			'users.name',
@@ -198,11 +196,11 @@ class UsersController extends KagiController {
 			'users.blocked',
 			'users.banned',
 			'users.confirmed',
+			'users.allow_direct',
 			'users.activated',
 			'users.created_at'
 			);
 //			->orderBy('users.email', 'ASC');
-//dd($query);
 
 		return Datatables::of($query)
 //			->remove_column('id')
@@ -218,6 +216,10 @@ class UsersController extends KagiController {
 			-> edit_column(
 				'confirmed',
 				'@if ($confirmed=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
+				)
+			-> edit_column(
+				'allow_direct',
+				'@if ($allow_direct=="1") <span class="glyphicon glyphicon-ok text-success"></span> @else <span class=\'glyphicon glyphicon-remove text-danger\'></span> @endif'
 				)
 			-> edit_column(
 				'activated',

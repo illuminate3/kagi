@@ -101,6 +101,31 @@ class RegistrarRepository extends BaseRepository {
 		return $approved;
 	}
 
+
+	/**
+	 * Check user if approved to access site
+	 *
+	 * @param  int  $email
+	 * @return
+	 */
+	public function checkAllowDirect($email)
+	{
+		$user = DB::table('users')
+			->where('email', '=', $email)
+			->first();
+
+// Run authorization check to see if user is allowed to login directly
+		$allow_direct = false;
+		if ($user != null) {
+			if ( $user->allow_direct == 1) {
+				$allow_direct = true;
+			}
+		}
+//dd($allow_direct);
+
+		return $allow_direct;
+	}
+
 /*
 |---------------------------------------------------------------------------
 | Confirm

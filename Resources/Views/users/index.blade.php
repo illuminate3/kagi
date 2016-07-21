@@ -60,6 +60,12 @@ oTable =
 				searchable: false
 			},
 			{
+				data: 'allow_direct',
+				name: 'users.allow_direct',
+				orderable: true,
+				searchable: false
+			},
+			{
 				data: 'activated',
 				name: 'users.activated',
 				orderable: true,
@@ -118,6 +124,7 @@ oTable =
 			<th>{{ trans('kotoba::table.blocked') }}</th>
 			<th>{{ trans('kotoba::table.banned') }}</th>
 			<th>{{ trans('kotoba::table.confirmed') }}</th>
+			<th>{{ trans('kotoba::table.allow_direct') }}</th>
 			<th>{{ trans('kotoba::table.activated') }}</th>
 			<th>{{ trans('kotoba::table.created_at') }}</th>
 

@@ -106,6 +106,24 @@ class Kagi extends Presenter {
 
 
 	/**
+	 * activated checkbox
+	 *
+	 * @return string
+	 */
+	public function allow_direct()
+	{
+//dd("loaded");
+		$return = '';
+		$allow_direct = $this->entity->allow_direct;
+		if ( $allow_direct == 1 ) {
+			$return = "checked";
+		}
+
+		return $return;
+	}
+
+
+	/**
 	 * banned icon
 	 *
 	 * @return string
@@ -180,6 +198,27 @@ class Kagi extends Presenter {
 		$activated = $this->entity->activated;
 
 		if ( $activated == 1 ) {
+			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
+		} else {
+			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';
+		}
+
+		return $return;
+	}
+
+
+	/**
+	 * activated icon
+	 *
+	 * @return string
+	 */
+	public function iconAllowDirect()
+	{
+//dd("loaded");
+		$return = '';
+		$allow_direct = $this->entity->allow_direct;
+
+		if ( $allow_direct == 1 ) {
 			$return = '<span class="glyphicon glyphicon-ok text-success"></span>';
 		} else {
 			$return = '<span class="glyphicon glyphicon-remove text-danger"></span>';

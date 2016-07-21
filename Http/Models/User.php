@@ -36,6 +36,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		'blocked',
 		'banned',
 		'confirmed',
+		'allow_direct',
 		'activated',
 		'activated_at',
 		'last_login',

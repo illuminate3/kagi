@@ -105,6 +105,11 @@ jQuery(document).ready(function($) {
 		&nbsp;{{ trans('kotoba::general.activated') }}
 	</label>
 
+	<label class="checkbox-inline">
+		<input type="checkbox" id="allow_direct" name="allow_direct" value="1" {{ $user->present()->allow_direct }}>
+		&nbsp;{{ trans('kotoba::auth.allow_direct') }}
+	</label>
+
 </div>
 
 <hr>

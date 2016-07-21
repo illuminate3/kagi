@@ -53,6 +53,7 @@ class CreateUsersTable extends Migration {
 			$table->boolean('banned')->default(0)->nullable();
 			$table->boolean('confirmed')->default(0)->nullable();
 			$table->boolean('activated')->default(0)->nullable();
+			$table->boolean('allow_direct')->default(0)->nullable();
 
 			$table->string('confirmation_code')->nullable();
 			$table->timestamp('activated_at')->nullable();

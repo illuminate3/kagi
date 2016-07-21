@@ -48,19 +48,24 @@ trait AuthenticatesUsers
 		}
 
 		$credentials = $this->getCredentials($request);
-		$check_if_no_bans = $this->registrar_repo->checkUserApproval($credentials['email']);
 
-		if ( $check_if_no_bans == true ) {
+		$check_if_allow_direct = $this->registrar_repo->checkAllowDirect($credentials['email']);
+		if ( $check_if_allow_direct == true ) {
 
-			if (Auth::attempt($credentials, $request->has('remember'))) {
-				return $this->handleUserWasAuthenticated($request, $throttles);
-			}
+			$check_if_no_bans = $this->registrar_repo->checkUserApproval($credentials['email']);
+			if ( $check_if_no_bans == true ) {
 
-			// If the login attempt was unsuccessful we will increment the number of attempts
-			// to login and redirect the user back to the login form. Of course, when this
-			// user surpasses their maximum number of attempts they will get locked out.
-			if ($throttles) {
-				$this->incrementLoginAttempts($request);
+				if (Auth::attempt($credentials, $request->has('remember'))) {
+					return $this->handleUserWasAuthenticated($request, $throttles);
+				}
+
+				// If the login attempt was unsuccessful we will increment the number of attempts
+				// to login and redirect the user back to the login form. Of course, when this
+				// user surpasses their maximum number of attempts they will get locked out.
+				if ($throttles) {
+					$this->incrementLoginAttempts($request);
+				}
+
 			}
 
 		}

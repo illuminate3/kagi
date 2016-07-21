@@ -137,6 +137,12 @@ class UserRepository extends BaseRepository {
 			$confirmation_code = md5(uniqid(mt_rand(), true));
 		}
 
+		if ( isset($userData['allow_direct']) ) {
+			$allow_direct = $userData['allow_direct'];
+		} else {
+			$allow_direct = 0;
+		}
+
 		if ( isset($userData['activated']) ) {
 			$activated = $userData['activated'];
 			$activated_at = $date;
@@ -152,6 +158,7 @@ class UserRepository extends BaseRepository {
 			'blocked'				=> $blocked,
 			'banned'				=> $banned,
 			'confirmed'				=> $confirmed,
+			'allow_direct'			=> $allow_direct,
 			'activated'				=> $activated,
 			'activated_at'			=> $activated_at,
 			'confirmation_code'		=> $confirmation_code
@@ -204,6 +211,11 @@ class UserRepository extends BaseRepository {
 			$user->confirmed = 1;
 		} else {
 			$user->confirmed = 0;
+		}
+		if ( isset($input['allow_direct']) ) {
+			$user->allow_direct = 1;
+		} else {
+			$user->allow_direct = 0;
 		}
 		if ( isset($input['activated']) ) {
 			$user->activated = 1;
