@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Password;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Flash;
+use Hash;
 use Theme;
+
 
 trait ResetsPasswords
 {
@@ -124,7 +126,7 @@ trait ResetsPasswords
 	 */
 	protected function resetPassword($user, $password)
 	{
-		$user->password = bcrypt($password);
+		$user->password = Hash::make($password);
 
 		$user->save();
 

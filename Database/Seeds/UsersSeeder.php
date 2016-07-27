@@ -9,7 +9,7 @@ use App\Modules\Kagi\Http\Models\User as User;
 
 use Config;
 use DB;
-//use Hash;
+use Hash;
 
 class UsersSeeder extends Seeder
 {
@@ -41,8 +41,8 @@ class UsersSeeder extends Seeder
 			$c['id']				= $line[0];
 			$c['name']				= $line[2];
 			$c['email']				= $line[3];
-//			$c['password']			= Hash::make($line[4]);
-			$c['password']			= bcrypt($line[3]);
+			$c['password']			= Hash::make($line[3]);
+//			$c['password']			= bcrypt($line[3]);
 // 			$c['confirmed']			= 1;
 // 			$c['activated']			= 1;
 

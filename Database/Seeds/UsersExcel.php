@@ -13,6 +13,7 @@ use App\Modules\Jinji\Http\Repositories\EmployeeRepository;
 
 use Config;
 use DB;
+use Hash;
 
 
 class UsersExcel extends Seeder
@@ -156,7 +157,7 @@ echo PHP_EOL;
 		$admin = array(
 			'name'					=> 'ADMIN',
 			'email'					=> 'admin@admin.com',
-			'password'				=> bcrypt('kagiadmin'),
+			'password'				=> Hash::make('kagiadmin'),
 			'activated_at'			=> date("Y-m-d H:i:s"),
 			'created_at'			=> date("Y-m-d H:i:s"),
 			'blocked'				=> 0,
@@ -267,7 +268,7 @@ echo PHP_EOL;
 			$data['id']							= $line[0];
 			$data['name']						= $line[2];
 			$data['email']						= $line[3];
-			$data['password']					= bcrypt($line[3]);
+			$data['password']					= Hash::make($line[3]);
 			$data['activated_at']				= date("Y-m-d H:i:s");
 			$data['created_at']					= date("Y-m-d H:i:s");
 			$data['blocked']					= 0;

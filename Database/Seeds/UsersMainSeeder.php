@@ -9,6 +9,7 @@ use App\Modules\Kagi\Http\Models\User as User;
 
 use Config;
 use DB;
+use Hash;
 
 
 class UsersMainSeeder extends Seeder
@@ -29,7 +30,7 @@ class UsersMainSeeder extends Seeder
 		$admin = array(
 			'name'					=> 'admin',
 			'email'					=> 'admin@admin.com',
-			'password'				=> bcrypt('kagiadmin'),
+			'password'				=> Hash::make('kagiadmin'),
 			'activated_at'			=> date("Y-m-d H:i:s"),
 			'created_at'			=> date("Y-m-d H:i:s"),
 			'blocked'				=> 0,
