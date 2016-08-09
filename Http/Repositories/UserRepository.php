@@ -271,6 +271,29 @@ class UserRepository extends BaseRepository {
 	}
 
 
+	public function getUserByIdTag($id)
+	{
+		$user = DB::table('users')
+//			->where('id_tag', '=', $id)
+			->where('id', '=', $id)
+			->pluck('id');
+//dd($user);
+
+		return $user;
+	}
+
+
+	public function getUserByEmail($email)
+	{
+		$user = DB::table('users')
+			->where('email', '=', $email)
+			->pluck('id');
+//dd($user);
+
+		return $user;
+	}
+
+
 	public function createEmployee($userData)
 	{
 //dd($userData);
