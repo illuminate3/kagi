@@ -38,6 +38,10 @@ class CreateUsersTable extends Migration {
 			$table->increments('id');
 
 			$table->string('name');
+
+			$table->string('ad_name')->unique()->nullable();
+			$table->string('user_badge_id')->unique()->nullable();
+
 			$table->string('email')->unique()->index();
 //			$table->string('email')->index();
 			$table->string('password')->nullable()->index();

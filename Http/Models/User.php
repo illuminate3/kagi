@@ -31,6 +31,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 // Fillable ----------------------------------------------------------------
 	protected $fillable = [
 		'name',
+		'ad_name',
+		'user_badge_id',
 		'email',
 		'password',
 		'blocked',
