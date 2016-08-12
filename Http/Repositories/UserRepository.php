@@ -7,11 +7,14 @@ use App\Modules\Kagi\Http\Models\Role;
 use App\Modules\Kagi\Http\Models\User;
 use App\Modules\Kagi\Http\Repositories\RegistrarRepository;
 
+use App\Modules\Profiles\Events\ProfileWasUpdated;
+
 use Auth;
 use Config;
 use DateTime;
 use DB;
 use Eloquent;
+use Event;
 use Hash;
 use Setting;
 
@@ -230,6 +233,9 @@ class UserRepository extends BaseRepository {
 		$user->update();
 
 		$user->syncRoles($input['roles']);
+
+		Event::fire(new ProfileWasUpdated($user));
+
 	}
 
 
